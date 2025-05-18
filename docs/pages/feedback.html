@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Survey Form</title>
+
+  <!-- Your external stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ---------- Page Overrides & Home Button ---------- */
+    body {
+      margin: 0;
+      background: #171c24;
+      color: #f2f2f2;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrapper {
+      position: fixed;
+      width: 100%;
+      background: #171c24;
+      z-index: 1000;
+    }
+
+    .wrapper nav .links {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 20px;
+    }
+
+    .wrapper nav .links li {
+      margin-left: 10px;
+    }
+
+    .home-btn {
+      display: inline-block;
+      background: #000;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .home-btn:hover {
+      background: #333;
+    }
+
+    .main-content {
+      flex: 1;
+      margin-top: 70px; /* height of header */
+      padding: 20px;
+    }
+
+    .survey-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #1f262f;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .survey-container h1,
+    .survey-container p {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .survey-container h1 {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      font-weight: 500;
+    }
+    .survey-container p {
+      font-size: 18px;
+      color: #ddd;
+    }
+
+    .survey-container .form-group {
+      margin-bottom: 20px;
+    }
+    .survey-container label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #ddd;
+    }
+    .survey-container input[type="text"],
+    .survey-container input[type="email"],
+    .survey-container input[type="number"],
+    .survey-container textarea {
+      width: 100%;
+      padding: 12px 15px;
+      background: #24262b;
+      border: 1px solid #323c4e;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 15px;
+      transition: border-color 0.2s ease;
+    }
+    .survey-container input:focus,
+    .survey-container textarea:focus {
+      outline: none;
+      border-color: #e91e63;
+    }
+    .radio-group {
+      display: flex;
+      gap: 20px;
+    }
+    .radio-group label {
+      cursor: pointer;
+    }
+
+    .survey-container button[type="submit"] {
+      width: 100%;
+      padding: 14px 0;
+      background: #e91e63;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 500;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .survey-container button[type="submit"]:hover {
+      background: #d81b60;
+    }
+
+    footer.footer {
+      padding: 70px 0;
+      background: #24262b;
+      text-align: center;
+      color: #bbbbbb;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <div class="wrapper">
+    <nav>
+      <ul class="links">
+        <li><a href="/docs/index.html" class="home-btn">Home</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <div class="survey-container">
+      <h1 id="title">Feedback Form</h1>
+      <p id="description">Thank you for visiting our website!</p>
+      
+      <form id="survey-form">
+        <div class="form-group">
+          <label for="name" id="name-label">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="e.g. Bantai" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email" id="email-label">Your Email</label>
+          <input type="email" id="email" name="email" placeholder="e.g. raftaar@bantaiisland.com" required />
+        </div>
+
+        <div class="form-group">
+          <h3>Would you recommend our website to others?</h3>
+          <div class="radio-group">
+            <label for="question-1">
+              <input type="radio" id="question-1" name="recommend" value="no" /> No
+            </label>
+            <label for="question-2">
+              <input type="radio" id="question-2" name="recommend" value="yes" /> Yes
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <h3>Please let us know how we can improve</h3>
+          <textarea id="suggestions" name="suggestions" rows="6" placeholder="Your suggestions…"></textarea>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    &copy; 2025 whymcstanisdagoat. All rights reserved.
+    <p>PS - we are currently working on this form but you can send us feedback at - innovativemodelbuilding@gmail.com</p>
+  </footer>
+
+</body>
+</html>
