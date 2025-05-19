@@ -421,3 +421,87 @@ ul{
     .feedback-container button:hover {
       background: #d81b60;
     }
+
+/* Responsive for image */
+@media screen and (max-width: 560px) {
+  .dummy-text img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+/* 1) Fluid-base heading */
+.dummy-text h1 {
+  font-size: clamp(1.2rem, 5vw, 2.5rem);
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+/* 2) Global wrap‑preventer */
+.dummy-text {
+  hyphens: auto;
+  word-break: break-word;
+}
+
+/* 3) Mobile‑only extra shrink */
+@media screen and (max-width: 560px) {
+  .dummy-text h1 {
+    font-size: 1rem;       /* even smaller on tiny phones */
+  }
+  .dummy-text p {
+    font-size: 0.9rem;
+  }
+}
+
+/* hide desktop links on small screens, show hamburger */
+@media screen and (max-width: 900px) {
+  .wrapper .menu-icon {
+    display: block;
+  }
+  .content .links {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    background: #14181f;
+    transition: left 0.3s;
+  }
+  /* when the checkbox is checked, slide it in */
+  #show-menu:checked ~ label.menu-icon i:before {
+    content: "\f00d";  /* X icon */
+  }
+  #show-menu:checked ~ .menu-icon + .content .links {
+    left: 0;
+  }
+}
+
+/* Mobile‐only logo resize */
+@media screen and (max-width: 560px) {
+  .content .logo a {
+    /* fluidly scale between 1rem and 1.5rem based on viewport width */
+    font-size: clamp(1rem, 6vw, 1.5rem);
+    line-height: 1.2;
+    white-space: nowrap;        /* keep on one line */
+    overflow: hidden;           /* crop overflow */
+    text-overflow: ellipsis;    /* “MC STAN …” if still too long */
+  }
+}
+
+@media screen and (max-width: 900px) {
+  /* 1) make the off‑canvas menu fill the entire viewport */
+  nav .content .links {
+    position: fixed;
+    top: 0;                 /* start at the very top */
+    left: -100%;            /* hide entirely off‑screen to the left */
+    width: 100vw;           /* full viewport width */
+    height: 100vh;          /* full viewport height */
+    background: #14181f;    /* your dark menu background */
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    z-index: 999;
+  }
+
+  /* 2) slide it fully into view when the hamburger is checked */
+  nav input#show-menu:checked ~ .content .links {
+    left: 0;
+  }
+}
