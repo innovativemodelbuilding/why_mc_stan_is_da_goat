@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Survey Form</title>
+  <title>Feedback Form – Why MC Stan Is Da Goat</title>
 
-  <!-- Your external stylesheet -->
+  <!-- External stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 
   <style>
@@ -27,6 +27,7 @@
       width: 100%;
       background: #171c24;
       z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
 
     .wrapper nav .links {
@@ -41,17 +42,18 @@
 
     .home-btn {
       display: inline-block;
-      background: #000;
+      background: #e91e63;
       color: #fff;
       padding: 10px 20px;
       border-radius: 5px;
       font-size: 16px;
       font-weight: 500;
       text-decoration: none;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
     .home-btn:hover {
-      background: #333;
+      background: #d81b60;
+      transform: translateY(-2px);
     }
 
     .main-content {
@@ -64,27 +66,28 @@
       max-width: 600px;
       margin: 40px auto;
       background: #1f262f;
-      padding: 30px 40px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
     }
     .survey-container h1,
     .survey-container p {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     .survey-container h1 {
-      font-family: 'Poppins', sans-serif;
-      color: #fff;
-      font-weight: 500;
+      font-size: 2rem;
+      color: #e91e63;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
     .survey-container p {
       font-size: 18px;
-      color: #ddd;
+      color: #ccc;
     }
 
     .survey-container .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     .survey-container label {
       display: block;
@@ -94,21 +97,21 @@
     }
     .survey-container input[type="text"],
     .survey-container input[type="email"],
-    .survey-container input[type="number"],
     .survey-container textarea {
       width: 100%;
       padding: 12px 15px;
       background: #24262b;
       border: 1px solid #323c4e;
-      border-radius: 5px;
+      border-radius: 6px;
       color: #fff;
       font-size: 15px;
-      transition: border-color 0.2s ease;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
     .survey-container input:focus,
     .survey-container textarea:focus {
       outline: none;
       border-color: #e91e63;
+      box-shadow: 0 0 8px rgba(233,29,99,0.4);
     }
     .radio-group {
       display: flex;
@@ -116,29 +119,42 @@
     }
     .radio-group label {
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+    }
+    .radio-group input {
+      margin-right: 8px;
     }
 
     .survey-container button[type="submit"] {
       width: 100%;
-      padding: 14px 0;
+      padding: 16px 0;
       background: #e91e63;
       color: #fff;
       font-size: 17px;
-      font-weight: 500;
+      font-weight: 600;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.1s ease;
     }
     .survey-container button[type="submit"]:hover {
       background: #d81b60;
+      transform: translateY(-2px);
     }
 
     footer.footer {
-      padding: 70px 0;
+      padding: 40px 0;
       background: #24262b;
       text-align: center;
       color: #bbbbbb;
+      font-size: 14px;
+    }
+    footer.footer p {
+      margin-top: 8px;
+      color: #888;
+      font-size: 13px;
     }
   </style>
 </head>
@@ -157,7 +173,7 @@
   <div class="main-content">
     <div class="survey-container">
       <h1 id="title">Feedback Form</h1>
-      <p id="description">Thank you for visiting our website!</p>
+      <p id="description">We value your feedback! Let us know how we're doing.</p>
       
       <form id="survey-form">
         <div class="form-group">
@@ -174,10 +190,10 @@
           <h3>Would you recommend our website to others?</h3>
           <div class="radio-group">
             <label for="question-1">
-              <input type="radio" id="question-1" name="recommend" value="no" /> No
+              <input type="radio" id="question-1" name="recommend" value="No" required /> No
             </label>
             <label for="question-2">
-              <input type="radio" id="question-2" name="recommend" value="yes" /> Yes
+              <input type="radio" id="question-2" name="recommend" value="Yes" required /> Yes
             </label>
           </div>
         </div>
@@ -187,7 +203,7 @@
           <textarea id="suggestions" name="suggestions" rows="6" placeholder="Your suggestions…"></textarea>
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Send Feedback</button>
       </form>
     </div>
   </div>
@@ -195,8 +211,39 @@
   <!-- FOOTER -->
   <footer class="footer">
     &copy; 2025 whymcstanisdagoat. All rights reserved.
-    <p>PS - we are currently working on this form but you can send us feedback at - innovativemodelbuilding@gmail.com</p>
+    <p>We’re working on this form—feel free to email us directly at <a href="mailto:innovativemodelbuilding@gmail.com" style="color:#e91e63; text-decoration:none;">innovativemodelbuilding@gmail.com</a></p>
   </footer>
+
+  <!-- Mailto via Gmail Web Compose -->
+  <script>
+    document.getElementById('survey-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // grab & encode your form values
+      const name        = encodeURIComponent(this.name.value.trim());
+      const email       = encodeURIComponent(this.email.value.trim());
+      const recommend   = encodeURIComponent(this.recommend.value);
+      const suggestions = encodeURIComponent(this.suggestions.value.trim());
+
+      // build subject & body
+      const subject = encodeURIComponent(`Website Feedback from ${decodeURIComponent(name)}`);
+      const body =
+        `Name: ${decodeURIComponent(name)}%0D%0A` +
+        `Email: ${decodeURIComponent(email)}%0D%0A` +
+        `Recommend: ${decodeURIComponent(recommend)}%0D%0A%0D%0A` +
+        `Suggestions:%0D%0A${decodeURIComponent(suggestions)}`;
+
+      // Gmail web compose URL
+      const gmailUrl =
+        `https://mail.google.com/mail/?view=cm&fs=1` +
+        `&to=innovativemodelbuilding@gmail.com` +
+        `&su=${subject}` +
+        `&body=${body}`;
+
+      // open Gmail compose in a new tab
+      window.open(gmailUrl, '_blank');
+    });
+  </script>
 
 </body>
 </html>
