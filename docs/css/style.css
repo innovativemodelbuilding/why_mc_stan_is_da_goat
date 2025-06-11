@@ -497,10 +497,26 @@ nav .content {
   background: #24262b;
   margin-top: auto;
 }
+
+/* center the container and constrain its width */
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* use flex layout for columns */
+.footer .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .footer-col {
   width: 25%;
   padding: 0 15px;
 }
+
 .footer-col h4 {
   font-size: 25px;
   color: #ffffff;
@@ -509,6 +525,7 @@ nav .content {
   font-weight: 500;
   position: relative;
 }
+
 .footer-col h4::before {
   content: '';
   position: absolute;
@@ -519,9 +536,11 @@ nav .content {
   box-sizing: border-box;
   width: 50px;
 }
+
 .footer-col ul li:not(:last-child) {
   margin-bottom: 10px;
 }
+
 .footer-col ul li a {
   font-size: 20px;
   text-transform: capitalize;
@@ -531,10 +550,12 @@ nav .content {
   display: block;
   transition: all 0.3s ease;
 }
+
 .footer-col ul li a:hover {
   color: #ffffff;
   padding-left: 8px;
 }
+
 .footer-col .social-links a {
   display: inline-block;
   height: 40px;
@@ -547,21 +568,25 @@ nav .content {
   color: #ffffff;
   transition: all 0.5s ease;
 }
+
 .footer-col .social-links a:hover {
   color: #24262b;
   background-color: #ffffff;
 }
-@media(max-width: 767px) {
+
+@media (max-width: 767px) {
   .footer-col {
     width: 50%;
     margin-bottom: 30px;
   }
 }
-@media(max-width: 574px) {
+
+@media (max-width: 574px) {
   .footer-col {
     width: 100%;
   }
 }
+
 
 /* ================= Feedback Form ================= */
 .feedback-container {
