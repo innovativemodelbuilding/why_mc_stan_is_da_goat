@@ -74,6 +74,29 @@ ul {
   color: #e91e63;
 }
 
+.social-links a.social-icon {
+  width: 40px;
+  height: 40px;
+  background: #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+
+.social-links a.social-icon:hover {
+  background: #e91e63;
+}
+
+.social-links a.social-icon img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  margin: auto;
+  filter: brightness(0) invert(1); /* optional: to make sure it's white on dark bg */
+}
+
 
 /* Remove underlines from logo and nav links */
 .wrapper nav .logo a,
