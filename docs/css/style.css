@@ -60,13 +60,11 @@ ul {
   padding: 0 20px;
 }
 
-/* ← add this: remove underlines from logo and nav links */
+/* Remove underlines from logo and nav links */
 .wrapper nav .logo a,
 .wrapper nav .links li a {
   text-decoration: none;
 }
-
-/* if you want to ensure no underline on hover too: */
 .wrapper nav .logo a:hover,
 .wrapper nav .links li a:hover {
   text-decoration: none;
@@ -214,7 +212,10 @@ nav .content {
   top: 0;
 }
 
+
 /* ================= Responsive code ================= */
+
+/* For screens narrower than ~1250px */
 @media screen and (max-width: 1250px) {
   .wrapper nav {
     max-width: 100%;
@@ -240,6 +241,7 @@ nav .content {
   }
 }
 
+/* For screens narrower than ~900px: off-canvas nav fills left side fully */
 @media screen and (max-width: 900px) {
   .wrapper .menu-icon {
     display: flex;
@@ -247,33 +249,33 @@ nav .content {
   .wrapper #show-menu:checked ~ .menu-icon i::before {
     content: "\f00d";
   }
+  /* Off-canvas menu: fixed to left, width 70% */
   nav .content .links {
     display: block;
     position: fixed;
+    top: 0;
+    left: -70%;        /* hidden off-screen by its width */
+    width: 70%;        /* covers left 70% when open */
+    height: 100vh;
     background: #14181f;
-    height: 100%;
-    width: 100%;
-    top: 70px;
-    left: -100%;
-    margin-left: 0;
-    max-width: 350px;
+    padding-top: 70px; /* push below header */
     overflow-y: auto;
-    padding-bottom: 100px;
-    transition: all 0.3s ease;
-    z-index: 999;
+    transition: left 0.3s ease;
+    z-index: 1000;
   }
+  /* Slide into view flush left */
   nav #show-menu:checked ~ .content .links {
-    left: 0%;
+    left: 0;
   }
   .content .links li {
     margin: 15px 20px;
   }
   .content .links li a,
   .content .links li label {
-    line-height: 40px;
-    font-size: 20px;
     display: block;
     padding: 8px 18px;
+    font-size: 20px;
+    line-height: 40px;
     cursor: pointer;
     height: auto;
   }
@@ -281,7 +283,7 @@ nav .content {
     display: none;
   }
 
-  /* dropdown responsive code */
+  /* dropdown submenus in off-canvas */
   .content .links ul,
   .content .links ul ul {
     position: static;
@@ -313,7 +315,7 @@ nav .content {
   }
 }
 
-
+/* For screens narrower than ~400px */
 @media screen and (max-width: 400px) {
   .wrapper nav {
     padding: 0 10px;
@@ -342,13 +344,11 @@ nav .content {
   /* keep three columns, but let the middle one flex */
   grid-template-columns: 220px 1fr 250px;
   gap: 1rem;
-  /* remove the centered max-width constraint */
+  /* remove the centered max-width constraint to allow full width */
   max-width: none;
   width: 100%;
   /* only vertical margin, no horizontal */
   margin: 80px 0 1rem;
-  /* if you still want a little breathing room, keep
-     some padding—but it will push your sidebars in */
   padding: 0 1rem;
 }
 
@@ -361,6 +361,8 @@ nav .content {
   border: 1px solid #d1d5da;
   padding: 1rem;
   font-size: 0.95rem;
+  max-height: calc(100vh - (70px + 2rem));
+  overflow-y: auto;
 }
 .toc-title {
   font-size: 1.2rem;
@@ -645,11 +647,170 @@ nav .content {
   background: #d81b60;
 }
 
-/* ================= Responsive Adjustments ================= */
+/* ─── Global reset (all screens) ─── */
+html, body {
+  overflow-x: hidden;       /* no sideways scrolling ever */
+  scroll-behavior: smooth;  /* smooth vertical scrolling */
+}
+
+/* ===== Responsive adjustments ===== */
+
+/* For screens narrower than ~1250px */
+@media screen and (max-width: 1250px) {
+  .wrapper nav {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  nav .content .links {
+    margin-left: 30px;
+  }
+  .content .links li a {
+    padding: 8px 13px;
+  }
+  .wrapper .search-box {
+    max-width: calc(100% - 100px);
+  }
+  .wrapper .search-box input {
+    padding: 0 100px 0 15px;
+  }
+  /* force no underlines */
+  .wrapper nav .logo a,
+  .wrapper nav .links li a {
+    text-decoration: none;
+  }
+}
+
+/* For screens narrower than ~900px: off-canvas nav using transform */
+@media screen and (max-width: 900px) {
+  /* Show hamburger */
+  .wrapper .menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1100;           /* above the sliding panel */
+  }
+  .wrapper .menu-icon span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Off-canvas panel (hidden by transform) */
+  nav .content .links {
+    position: fixed;
+    top: 0;
+    left: 0;                   /* locked to left edge */
+    width: 100%;               /* change to 70% if desired */
+    height: 100vh;
+    background: #14181f;
+    padding-top: 70px;
+    overflow-y: auto;
+    transform: translateX(100%);      /* start off-screen right */
+    transition: transform 0.3s ease;  /* animate transform */
+    z-index: 1000;
+  }
+  /* Slide into view */
+  nav #show-menu:checked ~ .content .links {
+    transform: translateX(0);         /* flush left */
+  }
+
+  /* Hamburger → “X” animation */
+  .wrapper #show-menu:checked + .menu-icon span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .wrapper #show-menu:checked + .menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+  .wrapper #show-menu:checked + .menu-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Nav items styling */
+  .content .links li {
+    margin: 15px 20px;
+  }
+  .content .links li a,
+  .content .links li label {
+    display: block;
+    padding: 8px 18px;
+    font-size: 20px;
+    line-height: 40px;
+    cursor: pointer;
+    height: auto;
+  }
+  .content .links li a.desktop-link {
+    display: none;
+  }
+  /* Dropdown submenus */
+  .content .links ul,
+  .content .links ul ul {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    background: none;
+    max-height: 0;
+    overflow: hidden;
+  }
+  .content .links #show-features:checked ~ ul,
+  .content .links #show-services:checked ~ ul,
+  .content .links #show-items:checked ~ ul {
+    max-height: 100vh;
+  }
+  .content .links ul li {
+    margin: 7px 20px;
+  }
+  .content .links ul li a {
+    font-size: 18px;
+    line-height: 30px;
+    border-radius: 5px !important;
+  }
+
+  /* force no underlines */
+  .wrapper nav .logo a,
+  .wrapper nav .links li a,
+  .content .links li label {
+    text-decoration: none;
+  }
+}
+
+/* For screens narrower than ~400px */
+@media screen and (max-width: 400px) {
+  .wrapper nav {
+    padding: 0 10px;
+  }
+  .content .logo a {
+    font-size: clamp(1rem, 6vw, 1.5rem);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 70px;
+    display: flex;
+    align-items: center;
+  }
+  .wrapper .search-box {
+    max-width: calc(100% - 70px);
+  }
+  .wrapper .search-box .go-icon {
+    width: 30px;
+    right: 0;
+  }
+  .wrapper .search-box input {
+    padding-right: 30px;
+  }
+}
+
+/* For screens narrower than ~800px: collapse page layout */
 @media screen and (max-width: 800px) {
   .page-container {
     display: block;
-    margin-top: 90px;
+    margin-top: 90px; /* clear header + extra gap */
   }
   .sidebar {
     position: static;
@@ -667,12 +828,12 @@ nav .content {
   .article-title {
     font-size: 1.75rem;
   }
-
-  /* remove underlines from TOC links on small screens */
   .sidebar a {
     text-decoration: none;
   }
 }
+
+/* For screens narrower than ~560px */
 @media screen and (max-width: 560px) {
   .wrapper nav {
     padding: 0 10px;
@@ -697,12 +858,12 @@ nav .content {
   .wrapper .search-box input {
     padding-right: 30px;
   }
-
-  /* ensure TOC links stay underline-free on midsize mobile */
   .sidebar a {
     text-decoration: none;
   }
 }
+
+/* For screens narrower than ~480px */
 @media screen and (max-width: 480px) {
   .article-title {
     font-size: 1.5rem;
@@ -713,37 +874,7 @@ nav .content {
   .article-text h3 {
     font-size: 1.1rem;
   }
-
-  /* final safety-net for TOC underlines */
   .sidebar a {
     text-decoration: none;
   }
-}
-.insta-wrapper {
-  width: 100%;
-  height: 152px;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  position: relative;
-}
-.insta-wrapper iframe {
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.big-center-heading {
-  font-size: 3rem;
-  text-align: center;
-  margin-top: 3rem;
-  color: #111;
-  letter-spacing: 2px;
-}
-
-#special-heading {
-  font-size: 3rem;
-  text-align: center;
-  margin-top: 3rem;
-  color: #111;
-  letter-spacing: 2px;
 }
