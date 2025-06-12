@@ -60,6 +60,21 @@ ul {
   padding: 0 20px;
 }
 
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-size: 1.5rem;
+  color: #bbbbbb;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #e91e63;
+}
+
+
 /* Remove underlines from logo and nav links */
 .wrapper nav .logo a,
 .wrapper nav .links li a {
@@ -212,6 +227,18 @@ nav .content {
   top: 0;
 }
 
+.insta-wrapper {
+  width: 100%;
+  height: 152px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+.insta-wrapper iframe {
+  width: 100% !important;
+  height: 100% !important;
+}
 
 /* ================= Responsive code ================= */
 
