@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
+
+
 /* ================= Reset & Base ================= */
 *, *::before, *::after {
   margin: 0;
@@ -74,28 +76,6 @@ ul {
   color: #e91e63;
 }
 
-.social-links a.social-icon {
-  width: 40px;
-  height: 40px;
-  background: #555;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  transition: 0.3s ease;
-}
-
-.social-links a.social-icon:hover {
-  background: #e91e63;
-}
-
-.social-links a.social-icon img {
-  width: 24px;
-  height: 24px;
-  display: block;
-  margin: auto;
-  filter: brightness(0) invert(1); /* optional: to make sure it's white on dark bg */
-}
 
 
 /* Remove underlines from logo and nav links */
@@ -448,6 +428,26 @@ nav .content {
   margin-bottom: 1rem;
   line-height: 1.2;
 }
+/* Ensure paragraphs across all sections align uniformly */
+article.content p {
+  margin-top: 0;
+  margin-bottom: 1.6em;
+  margin-left: 0;
+  padding-left: 0;
+  line-height: 1.6;
+  display: block;
+}
+
+/* Optional: headings spacing */
+article.content h2 {
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+article.content h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.4em;
+}
+
 /* Infobox positioned in right column, styled like Wikipedia */
 .infobox {
   flex: 0 0 250px;
@@ -927,4 +927,252 @@ html, body {
   .sidebar a {
     text-decoration: none;
   }
+}
+
+
+/* ========================
+   Base Table Styling
+======================== */
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  table-layout: auto; /* Let content control column width */
+}
+
+.stats-table th,
+.stats-table td {
+  border: 1px solid #ccc;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: top;
+  word-break: break-word; /* Prevent overflow */
+  white-space: normal;     /* Allow text to wrap */
+}
+
+.stats-table thead th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+.stats-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* ========================
+   Rise to Fame Section
+======================== */
+#rise-to-fame {
+  overflow-x: auto;
+}
+
+/* ========================
+   Streaming & Chart Achievements Tables
+======================== */
+#streaming-chart-achievements {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+#streaming-chart-achievements table.stats-table {
+  margin-bottom: 1.5rem;
+}
+
+/* ========================
+   Responsive Adjustments
+======================== */
+@media (max-width: 600px) {
+  .stats-table {
+    table-layout: fixed; /* Columns take fixed width % */
+  }
+
+  .stats-table th,
+  .stats-table td {
+    padding: 0.6rem 0.5rem;
+    font-size: 0.85rem;
+    white-space: normal;    /* Wrap text instead of truncate */
+    word-break: break-word; /* Ensure long words break properly */
+  }
+
+  /* Optional: Adjust column widths */
+  .stats-table th:nth-child(1),
+  .stats-table td:nth-child(1) {
+    width: 25%;
+  }
+
+  .stats-table th:nth-child(2),
+  .stats-table td:nth-child(2) {
+    width: 35%;
+  }
+
+  .stats-table th:nth-child(3),
+  .stats-table td:nth-child(3) {
+    width: 20%;
+  }
+
+  .stats-table th:nth-child(4),
+  .stats-table td:nth-child(4) {
+    width: 20%;
+  }
+}
+
+
+
+/* ========================
+   Proof & Evidence Section
+======================== */
+
+/* 1. Import Lightbox2 styles (ensure you have included the Lightbox2 CSS in your HTML too) */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css");
+
+#proof-evidence {
+  margin-top: 3rem;
+}
+
+#proof-evidence h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.3rem;
+}
+
+.proof-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+/* uniform “card” size */
+.proof-gallery figure {
+  flex: 0 0 auto;
+  width: var(--card-width, 250px);
+  margin: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* wrap the image in an <a> for Lightbox */
+.proof-gallery figure a {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+/* image fills and is cropped */
+.proof-gallery figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* caption below */
+.proof-gallery figcaption {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+  flex-shrink: 0;
+}
+
+/* ========================
+   Responsive Adjustments
+======================== */
+@media (max-width: 600px) {
+  .proof-gallery {
+    justify-content: center;
+  }
+
+  .proof-gallery figure {
+    width: 100%;
+    aspect-ratio: auto;
+  }
+
+  .proof-gallery figure a {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* ========================
+   Force-Lightbox-Fixed Position
+======================== */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.lightboxOverlay,
+.lightbox {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 9999 !important;
+}
+
+.lightboxOverlay {
+  background: rgba(0, 0, 0, 0.85) !important;
+}
+
+.lightbox .lb-outerContainer {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.lightbox .lb-data .lb-caption {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* ========================
+   Custom Lightbox Navigation Arrows
+======================== */
+.lb-prev, .lb-next {
+  position: absolute !important;
+  top: 50% !important;
+  width: 30px !important;
+  height: 30px !important;
+  margin-top: -15px !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 50% !important;
+  text-align: center !important;
+  line-height: 30px !important;
+  font-size: 18px !important;
+  color: #fff !important;
+  z-index: 10000 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.lb-prev:after {
+  content: "\2039" !important;
+}
+
+.lb-next:after {
+  content: "\203A" !important;
+}
+
+.lb-prev {
+  left: 15px !important;
+}
+
+.lb-next {
+  right: 15px !important;
 }
