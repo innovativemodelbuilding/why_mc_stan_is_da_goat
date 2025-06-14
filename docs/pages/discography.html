@@ -149,6 +149,44 @@
   opacity: 1;
 }
 
+/* ========================
+   Discography: Mobile Tweaks
+======================== */
+@media (max-width: 600px) {
+  .discography-section {
+    padding: 2rem 1rem;
+  }
+
+  .discography-section .section-title {
+    font-size: 1.5rem;      /* shrink the text */
+    line-height: 1.2;       /* tighter line height */
+    margin-bottom: 1.5rem;  /* reduce gap below */
+    padding: 0 0.5rem;      /* a little inner breathing room */
+    word-break: break-word; /* allow wrapping mid‑word if needed */
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .album-card .card-image {
+    padding-bottom: 100%;   /* keep square */
+  }
+
+  .play-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    bottom: 8px;
+    right: 8px;
+  }
+
+  .album-info {
+    padding: 0.75rem;
+  }
+}
+
     </style>
 
 <!-- ========================
