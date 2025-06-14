@@ -53,29 +53,156 @@
     </div>
   </header>
 
- <!-- About Us Section -->
-  <div class="page-container">
-    <div class="content-wrapper">
-      <article class="content">
-        <h1 class="article-title">About Us</h1>
+    <style>
+/* ========================
+   Discography Card Grid
+======================== */
+.discography-section {
+  padding: 4rem 1rem;
+  background: transparent;       /* let the header’s dark carry through */
+  font-family: inherit;          /* uses Poppins from your reset */
+  text-align: center;
+}
 
-        <p>
-          This website is made by <a href="https://twitter.com/Arcturus_dhh" target="_blank">@Arcturus_dhh</a> to record all of MC Stan’s achievements in one place. Every chart-topping single, every record shattered, and every award won is tried to documented here so you have a clear view of why MC Stan commands such respect in the desi hip hop scene.
-        </p>
+.discography-section .section-title {
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  color: #202122;                /* your default text color */
+  letter-spacing: 0.5px;
+}
 
-        <p>
-          Our mission is to educate fans and newcomers alike on his music and influence. Explore deep dives into his albums, read the untold stories behind his lyrics, and discover how MC Stan’s raw energy and authenticity have reshaped the scene and inspired a new generation of artists.
-        </p>
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: 1170px;
+  margin: 0 auto;
+}
 
-        <p>
-          You’ll also find curated links to his most iconic Instagram Lives, the memes that capture his larger-than-life persona, and a collection of moments that show why MC Stan’s legacy is more than just music. it’s a movement. Welcome to the definitive MC Stan archive.
-        </p>
+.album-card {
+  position: relative;
+  background: #fff;              /* clean white background */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-      </article>
+.album-card .card-image {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;         /* 1:1 aspect ratio */
+  background-size: cover;
+  background-position: center;
+}
+
+.album-card .card-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+.play-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(233,30,99,0.9);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.album-info {
+  padding: 1rem;
+  text-align: left;
+}
+
+.album-info h3 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: #202122;
+}
+
+.album-info .year {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 4px;
+}
+
+.album-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.album-card:hover .play-btn {
+  opacity: 1;
+}
+
+    </style>
+
+<!-- ========================
+     Discography Section
+======================== -->
+<section id="discography" class="discography-section">
+  <br><br>
+<h2 class="section-title">MC Stan Discography</h2>
+  <div class="card-grid">
+    <!-- Example album card -->
+    <div class="album-card">
+      <div
+        class="card-image"
+        style="background-image: url('../assets/images/Discography/Tadipaar.jpg');"
+      >
+        <button class="play-btn">▶︎</button>
+      </div>
+      <div class="album-info">
+        <h3>Tadipaar</h3>
+        <p class="year">2020</p>
+      </div>
     </div>
-  </div>
 
-  <footer class="footer">
+    <div class="album-card">
+      <div
+        class="card-image"
+        style="background-image: url('../assets/images/Discography/Insaan.jpg');"
+      >
+        <button class="play-btn">▶︎</button>
+      </div>
+      <div class="album-info">
+        <h3>Insaan</h3>
+        <p class="year">2022</p>
+      </div>
+    </div>
+
+    <div class="album-card">
+      <div
+        class="card-image"
+        style="background-image: url('../assets/images/Discography/Mehfeel.jpg');"
+      >
+        <button class="play-btn">▶︎ </button>
+      </div>
+      <div class="album-info">
+        <h3>MEHFEEL</h3>
+        <p class="year">COMING SOON</p>
+      </div>
+    </div>
+
+    <!-- add more .album-card blocks as needed -->
+  </div>
+</section>
+
+<footer class="footer">
   <div class="container">
     <div class="row">
 
