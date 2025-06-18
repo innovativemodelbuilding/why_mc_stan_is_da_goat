@@ -1,0 +1,184 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Include this in your <head> or at the end of <body> in all your pages -->
+  <script>
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    // Disable certain key combinations:
+    document.addEventListener('keydown', function(e) {
+      const key = e.keyCode;
+      // F12
+      if (key === 123) {
+        e.preventDefault();
+        return false;
+      }
+      // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+      if (e.ctrlKey && e.shiftKey && (key === 73 || key === 74)) {
+        e.preventDefault();
+        return false;
+      }
+      if (e.ctrlKey && key === 85) {
+        e.preventDefault();
+        return false;
+      }
+      // Ctrl+Shift+C
+      if (e.ctrlKey && e.shiftKey && key === 67) {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // Optional: detect if DevTools is (probably) open via timing or dimension checks.
+    (function() {
+      const element = new Image();
+      Object.defineProperty(element, 'id', {
+        get: function() {
+          console.warn('DevTools detected');
+        }
+      });
+      setInterval(function() {
+        console.log(element);
+      }, 2000);
+    })();
+  </script>
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+  />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service | MC Stan Fan Page</title>
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Standard favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/artists/mc_stan_images/mc_stan_ico.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/artists/mc_stan_images/mc_stan_ico.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/images/artists/mc_stan_images/favicon-android-512-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <!-- iOS Home Screen -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/artists/mc_stan_images/favicon-180-apple-touch-icon.png">
+
+  <!-- Web App Manifest for Android/Home Screen -->
+  <link rel="manifest" href="../site.webmanifest">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+  <header>
+    <div class="wrapper">
+      <nav>
+        <!-- hidden checkbox for toggling menu -->
+        <input type="checkbox" id="show-menu">
+        <!-- pure-CSS hamburger icon -->
+        <label for="show-menu" class="menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+
+        <div class="content">
+          <div class="logo"><a href="../">MC STAN DA GOAT</a></div>
+          <ul class="links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../pages/about_us">About Us</a></li>
+            <li>
+              <a href="#" class="desktop-link">Iconic</a>
+              <input type="checkbox" id="show-features">
+              <label for="show-features">Features</label>
+              <ul>
+                <li><a href="#">Insta Lives</a></li>
+                <li><a href="#">Beefs</a></li>
+              </ul>
+            </li>
+            <li><a href="../pages/feedback">Feedback</a></li>
+            <li><a href="../pages/discography">Discography</a></li>
+          </ul>
+        </div>
+        <!-- search remains as-is -->
+        <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+        <form action="#" class="search-box">
+          <input type="text" placeholder="Type Something to Search..." required>
+          <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+        </form>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <div class="content-wrapper">
+      <article class="content">
+        <h1 class="article-title">Terms of Service</h1>
+        <section class="article-text">
+          <!-- Example Terms of Service content; customize as needed -->
+          <p>Welcome to MC Stan Fan Page. By accessing or using our site, you agree to be bound by these Terms of Service.</p>
+          <h2>Use of Site</h2>
+          <p>You agree to use the site only for lawful purposes and in accordance with these Terms.</p>
+          <h2>Intellectual Property</h2>
+          <p>All content on this site (text, images, logos) is owned or licensed by us. You may not reproduce without permission.</p>
+          <h2>User Contributions</h2>
+          <p>If you submit comments or other content, you grant us a license to use it. Do not submit offensive or infringing material.</p>
+          <h2>Disclaimer</h2>
+          <p>The site is provided “as is” without warranties. We are not liable for damages arising from use.</p>
+          <h2>Changes to Terms</h2>
+          <p>We may update these terms; changes will be posted here. Continued use constitutes acceptance.</p>
+          <p>Last updated: <!-- Insert date, e.g., June 18, 2025 --></p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="./about_us">About Us</a></li>
+            <li><a href="./contact">Contact Us</a></li>
+            <li><a href="./feedback">Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get Help</h4>
+          <ul>
+
+            <li><a href="./faqs">FAQs</a></li>
+            <li><a href="./privacy_policy">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="./terms_of_service">Terms of Service</a></li>
+            <li><a href="./cookie_policy">Cookie Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <!-- Bootstrap Icons -->
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="https://x.com/Arcturus_dhh"><i class="bi bi-twitter"></i></a>
+            <a href="https://www.instagram.com/arcturus_dhh/profilecard/?igsh=cnlkMDZzMzk5b3Jt"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

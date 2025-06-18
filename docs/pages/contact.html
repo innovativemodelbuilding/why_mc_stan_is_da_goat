@@ -62,16 +62,162 @@
   })();
 </script>
 
-    <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
-/>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | MC Stan Fan Page</title>
-  <link rel="stylesheet" href="../css/style.css">
-  
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback Form – Why MC Stan Is Da Goat</title>
+
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ---------- Page Overrides & Home Button ---------- */
+    body {
+      margin: 0;
+      background: #171c24;
+      color: #f2f2f2;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrapper {
+      position: fixed;
+      width: 100%;
+      background: #171c24;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+
+    .wrapper nav .links {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 20px;
+    }
+
+    .wrapper nav .links li {
+      margin-left: 10px;
+    }
+
+    .home-btn {
+      display: inline-block;
+      background: #e91e63;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .home-btn:hover {
+      background: #d81b60;
+      transform: translateY(-2px);
+    }
+
+    .main-content {
+      flex: 1;
+      margin-top: 70px; /* height of header */
+      padding: 20px;
+    }
+
+    .survey-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #1f262f;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+    .survey-container h1,
+    .survey-container p {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .survey-container h1 {
+      font-size: 2rem;
+      color: #e91e63;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .survey-container p {
+      font-size: 18px;
+      color: #ccc;
+    }
+
+    .survey-container .form-group {
+      margin-bottom: 24px;
+    }
+    .survey-container label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #ddd;
+    }
+    .survey-container input[type="text"],
+    .survey-container input[type="email"],
+    .survey-container textarea {
+      width: 100%;
+      padding: 12px 15px;
+      background: #24262b;
+      border: 1px solid #323c4e;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 15px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .survey-container input:focus,
+    .survey-container textarea:focus {
+      outline: none;
+      border-color: #e91e63;
+      box-shadow: 0 0 8px rgba(233,29,99,0.4);
+    }
+    .radio-group {
+      display: flex;
+      gap: 20px;
+    }
+    .radio-group label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+    }
+    .radio-group input {
+      margin-right: 8px;
+    }
+
+    .survey-container button[type="submit"] {
+      width: 100%;
+      padding: 16px 0;
+      background: #e91e63;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.1s ease;
+    }
+    .survey-container button[type="submit"]:hover {
+      background: #d81b60;
+      transform: translateY(-2px);
+    }
+
+    footer.footer {
+      padding: 40px 0;
+      background: #24262b;
+      text-align: center;
+      color: #bbbbbb;
+      font-size: 14px;
+    }
+    footer.footer p {
+      margin-top: 8px;
+      color: #888;
+      font-size: 13px;
+    }
+  </style>
   <!-- Standard favicons -->
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/artists/mc_stan_images/mc_stan_ico.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/artists/mc_stan_images/mc_stan_ico.png">
@@ -84,99 +230,93 @@
   <!-- Web App Manifest for Android/Home Screen -->
   <link rel="manifest" href="../site.webmanifest">
   <meta name="theme-color" content="#ffffff">
-
 </head>
 <body>
-    <header>
-    <div class="wrapper">
-      <nav>
-        <!-- hidden checkbox for toggling menu -->
-        <input type="checkbox" id="show-menu">
-        <!-- pure-CSS hamburger icon -->
-        <label for="show-menu" class="menu-icon">
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
 
-        <div class="content">
-          <div class="logo"><a href="../">MC STAN DA GOAT</a></div>
-          <ul class="links">
-            <li><a href="../">Home</a></li>
-            <li><a href="../pages/about_us">About Us</a></li>
-            <li>
-              <a href="#" class="desktop-link">Iconic</a>
-              <input type="checkbox" id="show-features">
-              <label for="show-features">Features</label>
-              <ul>
-                <li><a href="#">Insta Lives</a></li>
-                <li><a href="#">Beefs</a></li>
-              </ul>
-            </li>
-            <li><a href="../pages/feedback">Feedback</a></li>
-            <li><a href="../pages/discography">Discography</a></li>
-          </ul>
+  <!-- NAVBAR -->
+  <div class="wrapper">
+    <nav>
+      <ul class="links">
+        <li><a href="../" class="home-btn">Home</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <div class="survey-container">
+      <h1 id="title">Contact Us</h1>
+      <p id="description">We value your feedback! Let us know how we're doing.</p>
+      
+      <form id="survey-form">
+        <div class="form-group">
+          <label for="name" id="name-label">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="e.g. Bantai" required />
         </div>
-        <!-- search remains as-is -->
-        <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
-        <form action="#" class="search-box">
-          <input type="text" placeholder="Type Something to Search..." required>
-          <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
-        </form>
-      </nav>
-    </div>
-  </header>
 
-  <br><br>
-  <br>
-
-    <h1>WORK IN PROGRESS</h1>
-
-    <footer class="footer">
-  <div class="container">
-    <div class="row">
-
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="./about_us">About Us</a></li>
-          <li><a href="./contact">Contact Us</a></li>
-          <li><a href="./feedback">Feedback</a></li>
-          <li><a href="./history">History</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Get Help</h4>
-        <ul>
-          <li><a href="#">Support</a></li>
-          <li><a href="#">FAQs</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Cookie Policy</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Follow Us</h4>
-        <div class="social-links">
-          <!-- Bootstrap Icons -->
-          <a href="#"><i class="bi bi-facebook"></i></a>
-          <a href="https://x.com/Arcturus_dhh"><i class="bi bi-twitter"></i></a>
-          <a href="https://www.instagram.com/arcturus_dhh/profilecard/?igsh=cnlkMDZzMzk5b3Jt"><i class="bi bi-instagram"></i></a>
-          <a href="#"><i class="bi bi-linkedin"></i></a>
+        <div class="form-group">
+          <label for="email" id="email-label">Your Email</label>
+          <input type="email" id="email" name="email" placeholder="e.g. raftaar@bantaiisland.com" required />
         </div>
-      </div>
 
+        <div class="form-group">
+          <h3>Would you recommend our website to others?</h3>
+          <div class="radio-group">
+            <label for="question-1">
+              <input type="radio" id="question-1" name="recommend" value="No" required /> No
+            </label>
+            <label for="question-2">
+              <input type="radio" id="question-2" name="recommend" value="Yes" required /> Yes
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <h3>Please let us know how we can improve</h3>
+          <textarea id="suggestions" name="suggestions" rows="6" placeholder="Your suggestions…"></textarea>
+        </div>
+
+        <button type="submit">Send Feedback</button>
+      </form>
     </div>
   </div>
-</footer>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    &copy; 2025 whymcstanisdagoat. All rights reserved.
+    <p>We’re working on this form—feel free to email us directly at <a href="mailto:innovativemodelbuilding@gmail.com" style="color:#e91e63; text-decoration:none;">innovativemodelbuilding@gmail.com</a></p>
+  </footer>
+
+  <!-- Mailto via Gmail Web Compose -->
+  <script>
+    document.getElementById('survey-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // grab & encode your form values
+      const name        = encodeURIComponent(this.name.value.trim());
+      const email       = encodeURIComponent(this.email.value.trim());
+      const recommend   = encodeURIComponent(this.recommend.value);
+      const suggestions = encodeURIComponent(this.suggestions.value.trim());
+
+      // build subject & body
+      const subject = encodeURIComponent(`Website Feedback from ${decodeURIComponent(name)}`);
+      const body =
+        `Name: ${decodeURIComponent(name)}%0D%0A` +
+        `Email: ${decodeURIComponent(email)}%0D%0A` +
+        `Recommend: ${decodeURIComponent(recommend)}%0D%0A%0D%0A` +
+        `Suggestions:%0D%0A${decodeURIComponent(suggestions)}`;
+
+      // Gmail web compose URL
+      const gmailUrl =
+        `https://mail.google.com/mail/?view=cm&fs=1` +
+        `&to=innovativemodelbuilding@gmail.com` +
+        `&su=${subject}` +
+        `&body=${body}`;
+
+      // open Gmail compose in a new tab
+      window.open(gmailUrl, '_blank');
+    });
+  </script>
 
 </body>
 </html>
