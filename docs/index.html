@@ -1,6 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Include this in your <head> or at the end of <body> in all your pages -->
+<script>
+  // Disable right-click context menu
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  // Disable certain key combinations:
+  document.addEventListener('keydown', function(e) {
+    // e.keyCode is deprecated but widely supported; you can also use e.key in modern browsers.
+    const key = e.keyCode;
+
+    // F12
+    if (key === 123) {
+      e.preventDefault();
+      return false;
+    }
+
+    // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+    if (e.ctrlKey && e.shiftKey && (key === 73 || key === 74)) {
+      // 73 = I, 74 = J
+      e.preventDefault();
+      return false;
+    }
+    if (e.ctrlKey && key === 85) {
+      // 85 = U
+      e.preventDefault();
+      return false;
+    }
+    // You can add more shortcuts if desired, e.g., Ctrl+Shift+C (keyCode 67),
+    // but note this may break accessibility or other browser features.
+    if (e.ctrlKey && e.shiftKey && key === 67) {
+      // 67 = C
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Optional: detect if DevTools is (probably) open via timing or dimension checks.
+  // This is very hacky and unreliable, but shown here for completeness:
+  (function() {
+    const element = new Image();
+    Object.defineProperty(element, 'id', {
+      get: function() {
+        // This getter runs when devtools console tries to print the element.
+        // You could, for example, alert or redirect, but be cautious (annoying UX).
+        console.warn('DevTools detected');
+      }
+    });
+    // Periodically log the element; in normal console this getter won't run,
+    // but if someone inspects console and expands logged objects, it may fire.
+    setInterval(function() {
+      console.log(element);
+      // No real prevention—just a detection attempt.
+    }, 2000);
+  })();
+</script>
+
   <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
