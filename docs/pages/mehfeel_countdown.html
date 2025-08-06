@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Disable right-click & common DevTools shortcuts -->
+  <script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      const key = e.keyCode;
+      if (
+        key === 123 ||                                        // F12
+        (e.ctrlKey && e.shiftKey && [73,74,67].includes(key)) || // Ctrl+Shift+I/J/C
+        (e.ctrlKey && key === 85)                             // Ctrl+U
+      ) {
+        e.preventDefault();
+        return false;
+      }
+    });
+  </script>
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+  />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>MEHFEEL Countdown | MC Stan is Da GOAT</title>
+
+  <!-- Global styles -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Flip-clock styles -->
+  <link rel="stylesheet" href="../css/flip-clock.css" />
+
+  <!-- Force footer to full width everywhere -->
+  <style>
+    .footer .container {
+      max-width: none !important;
+      width: 100%    !important;
+      margin: 0 auto !important;
+      padding: 0 15px !important;
+    }
+  </style>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/artists/mc_stan_images/mc_stan_ico.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/artists/mc_stan_images/mc_stan_ico.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/images/artists/mc_stan_images/favicon-android-512-touch-icon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/artists/mc_stan_images/favicon-180-apple-touch-icon.png" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <meta name="theme-color" content="#ffffff" />
+</head>
+
+<body class="mehfeel-page">
+  <!-- Header placeholder -->
+  <div id="header-placeholder"></div>
+
+  <!-- Spacer to clear the fixed header -->
+  <div style="height:100px;"></div>
+
+  <!-- MEHFEEL Countdown -->
+  <div id="mehfeel-container" style="text-align:center; color:red;">
+    <img src="../assets/MEHFEEL.png" alt="MEHFEEL" class="mehfeel-img" />
+    <div id="flip-clock"></div>
+  </div>
+
+
+
+  <!-- Flip-clock Script -->
+  <script>
+    console.clear();
+
+    // 1) Flip-clock “tracker”
+    function CountdownTracker(label, value) {
+      var el = document.createElement('span');
+      el.className = 'flip-clock__piece';
+      el.innerHTML =
+        '<b class="flip-clock__card card">' +
+          '<b class="card__top"></b>' +
+          '<b class="card__bottom"></b>' +
+          '<b class="card__back"><b class="card__bottom"></b></b>' +
+        '</b>' +
+        '<span class="flip-clock__slot">' + label + '</span>';
+
+      this.el = el;
+      var top        = el.querySelector('.card__top'),
+          bottom     = el.querySelector('.card__bottom'),
+          back       = el.querySelector('.card__back'),
+          backBottom = el.querySelector('.card__back .card__bottom');
+
+      this.update = function(val) {
+        val = ('0' + val).slice(-2);
+        if (val !== this.currentValue) {
+          if (this.currentValue >= 0) {
+            back.setAttribute('data-value', this.currentValue);
+            bottom.setAttribute('data-value', this.currentValue);
+          }
+          this.currentValue = val;
+          top.innerText = this.currentValue;
+          backBottom.setAttribute('data-value', this.currentValue);
+
+          this.el.classList.remove('flip');
+          void this.el.offsetWidth; // trigger reflow
+          this.el.classList.add('flip');
+        }
+      };
+      this.update(value);
+    }
+
+    // 2) getTimeRemaining (countdown, not used but kept)
+    function getTimeRemaining(endtime) {
+      var t = Date.parse(endtime) - Date.parse(new Date());
+      return {
+        'Total':   t,
+        'Days':    Math.floor(t / (1000 * 60 * 60 * 24)),
+        'Hours':   Math.floor((t / (1000 * 60 * 60)) % 24),
+        'Minutes': Math.floor((t / 1000 / 60) % 60),
+        'Seconds': Math.floor((t / 1000) % 60)
+      };
+    }
+
+    // 3) Custom getTime() for count-up
+    const startDate = new Date('1953-12-05T00:00:00');
+    function getTime() {
+      const now   = new Date();
+      let delta   = now - startDate;
+
+      let secs    = Math.floor(delta / 1000);
+      let mins    = Math.floor(secs / 60);   secs %= 60;
+      let hrs     = Math.floor(mins / 60);   mins %= 60;
+      let days    = Math.floor(hrs / 24);    hrs  %= 24;
+      let years   = Math.floor(days / 365);
+      let months  = Math.floor((days % 365) / 30);
+               days   = days - (years * 365 + months * 30);
+
+      return {
+        Total:   delta,
+        Years:   years,
+        Months:  months,
+        Days:    days,
+        Hours:   hrs,
+        Minutes: mins,
+        Seconds: secs
+      };
+    }
+
+    // 4) Clock constructor
+    function Clock(countdown, callback) {
+      countdown = countdown ? new Date(Date.parse(countdown)) : false;
+      callback  = callback  || function(){};
+
+      var updateFn = countdown ? getTimeRemaining : getTime;
+      this.el     = document.createElement('div');
+      this.el.className = 'flip-clock';
+
+      var trackers = {},
+          t        = updateFn(countdown),
+          key, timeinterval;
+
+      for (key in t) {
+        if (key === 'Total') continue;
+        trackers[key] = new CountdownTracker(key, t[key]);
+        this.el.appendChild(trackers[key].el);
+      }
+
+      var i = 0;
+      function updateClock() {
+        timeinterval = requestAnimationFrame(updateClock);
+        if (i++ % 10) return;  // throttle
+
+        var t = updateFn(countdown);
+        if (t.Total < 0) {
+          cancelAnimationFrame(timeinterval);
+          for (key in trackers) trackers[key].update(0);
+          callback();
+          return;
+        }
+        for (key in trackers) trackers[key].update(t[key]);
+      }
+      setTimeout(updateClock, 500);
+    }
+
+    // 5) Instantiate the clock
+    document.addEventListener('DOMContentLoaded', () => {
+      const clock = new Clock(false);  // use custom getTime()
+      document.getElementById('flip-clock').appendChild(clock.el);
+    });
+  </script>
+
+  <!-- Partials (header & footer injector) -->
+  <script src="../java/partials.js"></script>
+
+  <!-- jQuery & Buy Me a Coffee widget -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  <script 
+    data-name="BMC-Widget"
+    data-cfasync="false"
+    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+    data-id="arcturus_dhh"
+    data-description="Support me on Buy me a coffee!"
+    data-message="Broke tere liye rahinga joke"
+    data-color="#5F7FFF"
+    data-position="Right"
+    data-x_margin="18"
+    data-y_margin="18">
+  </script>
+</body>
+</html>

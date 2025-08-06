@@ -640,6 +640,9 @@ article.content h3 {
 }
 
 
+
+
+
 /* ================= Feedback Form ================= */
 .feedback-container {
   max-width: 600px;
@@ -1177,3 +1180,38 @@ html, body {
   right: 15px !important;
 }
 
+/* ─── Fit MEHFEEL + Flip-Clock to Mobile Viewports ─── */
+@media screen and (max-width: 768px) {
+  /* MEHFEEL image: 90% of viewport width */
+  .mehfeel-img {
+    width: 90vw !important;
+    max-width: none !important;
+    height: auto !important;
+  }
+
+  @media screen and (max-width: 768px) {
+  /* keep it on one line */
+  .flip-clock {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    overflow-x: auto !important;   /* small scrollbar if still just over */
+    padding: 0 4px !important;
+  }
+
+  /* slightly more breathing room */
+  .flip-clock__piece {
+    margin: 0 6px !important;
+  }
+
+  /* digits a bit larger than before */
+  .card {
+    font-size: 10vw !important;    /* up from 6vw */
+  }
+
+  /* labels a bit larger */
+  .flip-clock__slot {
+    font-size: 5.5vw !important;  /* up from 2vw */
+  }
+}
+}
