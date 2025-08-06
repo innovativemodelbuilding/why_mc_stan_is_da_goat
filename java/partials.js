@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="logo"><a href="${base}">MC STAN DA GOAT</a></div>
             <ul class="links">
               <li><a href="${base}">Home</a></li>
-              <li><a href="${base}pages/about_us.html">About Us</a></li>
+              <li><a href="${base}pages/about_us">About Us</a></li>
               <li>
                 <a href="#" class="desktop-link">Iconic</a>
                 <input type="checkbox" id="show-features">
@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
                   <li><a href="#">Beefs</a></li>
                 </ul>
               </li>
-              <li><a href="${base}pages/contact.html">Contact Us</a></li>
-              <li><a href="${base}pages/discography.html">Discography</a></li>
-              <li><a href="${base}pages/mehfeel_countdown.html">MEHFEEL COUNTDOWN</a></li>
+              <li><a href="${base}pages/contact">Contact Us</a></li>
+              <li><a href="${base}pages/discography">Discography</a></li>
+              <li><a href="${base}pages/mehfeel_countdown">MEHFEEL COUNTDOWN</a></li>
             </ul>
           </div>
           <label for="show-search" class="search-icon">
@@ -53,22 +53,22 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="footer-col">
             <h4>Company</h4>
             <ul>
-              <li><a href="${base}pages/about_us.html">About Us</a></li>
-              <li><a href="${base}pages/contact.html">Contact Us</a></li>
+              <li><a href="${base}pages/about_us">About Us</a></li>
+              <li><a href="${base}pages/contact">Contact Us</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>Get Help</h4>
             <ul>
-              <li><a href="${base}pages/faqs.html">FAQs</a></li>
-              <li><a href="${base}pages/privacy_policy.html">Privacy Policy</a></li>
+              <li><a href="${base}pages/faqs">FAQs</a></li>
+              <li><a href="${base}pages/privacy_policy">Privacy Policy</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>Legal</h4>
             <ul>
-              <li><a href="${base}pages/terms_of_service.html">Terms of Service</a></li>
-              <li><a href="${base}pages/cookie_policy.html">Cookie Policy</a></li>
+              <li><a href="${base}pages/terms_of_service">Terms of Service</a></li>
+              <li><a href="${base}pages/cookie_policy">Cookie Policy</a></li>
             </ul>
           </div>
           <div class="footer-col">
