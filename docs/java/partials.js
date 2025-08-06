@@ -1,11 +1,9 @@
-// js/partials.js
+// java/partials.js
 document.addEventListener('DOMContentLoaded', () => {
-  // ── 1. Figure out your repo base path
-  const pathParts = window.location.pathname.split('/');
-  const repoName  = pathParts[1];                   // e.g. "why_mc_stan_is_da_goat"
-  const base      = repoName ? `/${repoName}/` : '/';
+  // ── 1. Fixed base for your docs/ root
+  const base = '/';
 
-  // ── 2. Define your header HTML
+  // ── 2. Header
   const headerHTML = `
     <header>
       <div class="wrapper">
@@ -18,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="logo"><a href="${base}">MC STAN DA GOAT</a></div>
             <ul class="links">
               <li><a href="${base}">Home</a></li>
-              <li><a href="${base}pages/about_us">About Us</a></li>
+              <li><a href="${base}pages/about_us.html">About Us</a></li>
               <li>
                 <a href="#" class="desktop-link">Iconic</a>
                 <input type="checkbox" id="show-features">
@@ -28,9 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
                   <li><a href="#">Beefs</a></li>
                 </ul>
               </li>
-              <li><a href="${base}pages/contact">Contact Us</a></li>
-              <li><a href="${base}pages/discography">Discography</a></li>
-              <li><a href="${base}pages/docs/pages/mehfeel_countdown">MEHFEEL COUNTDOWN</a></li>
+              <li><a href="${base}pages/contact.html">Contact Us</a></li>
+              <li><a href="${base}pages/discography.html">Discography</a></li>
+              <li><a href="${base}pages/mehfeel_countdown.html">MEHFEEL COUNTDOWN</a></li>
             </ul>
           </div>
           <label for="show-search" class="search-icon">
@@ -47,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </header>
   `;
 
-  // ── 3. Define your footer HTML
+  // ── 3. Footer
   const footerHTML = `
     <footer class="footer">
       <div class="container">
@@ -55,14 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="footer-col">
             <h4>Company</h4>
             <ul>
-              <li><a href="${base}pages/about_us">About Us</a></li>
-              <li><a href="${base}pages/contact">Contact Us</a></li>
+              <li><a href="${base}pages/about_us.html">About Us</a></li>
+              <li><a href="${base}pages/contact.html">Contact Us</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>Get Help</h4>
             <ul>
-              <li><a href="${base}pages/faqs">FAQs</a></li>
+              <li><a href="${base}pages/faqs.html">FAQs</a></li>
               <li><a href="${base}pages/privacy_policy.html">Privacy Policy</a></li>
             </ul>
           </div>
@@ -78,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="social-links">
               <a href="#"><i class="bi bi-facebook"></i></a>
               <a href="https://x.com/Arcturus_dhh"><i class="bi bi-twitter"></i></a>
-              <a href="https://www.instagram.com/arcturus_dhh/profilecard/?igsh=cnlkMDZzMzk5b3Jt">
+              <a href="https://www.instagram.com/arcturus_dhh/">
                 <i class="bi bi-instagram"></i>
               </a>
               <a href="#"><i class="bi bi-linkedin"></i></a>
@@ -89,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </footer>
   `;
 
-  // ── 4. Inject into your placeholders
+  // ── 4. Inject
   const hdr = document.getElementById('header-placeholder');
   if (hdr) hdr.innerHTML = headerHTML;
 
