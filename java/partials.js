@@ -1,9 +1,13 @@
 // java/partials.js
 document.addEventListener('DOMContentLoaded', () => {
-  // ── 1. Fixed base for your docs/ root
-  const base = '/';
+  // ── 1. Figure out your repo base path (works on GitHub Pages or localhost)
+  const pathParts = window.location.pathname.split('/').filter(p => p);
+  const repoName  = pathParts[0] && window.location.hostname !== 'localhost'
+                    ? pathParts[0]
+                    : '';
+  const base = repoName ? `/${repoName}/` : '/';
 
-  // ── 2. Header
+  // ── 2. Header HTML
   const headerHTML = `
     <header>
       <div class="wrapper">
@@ -16,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="logo"><a href="${base}">MC STAN DA GOAT</a></div>
             <ul class="links">
               <li><a href="${base}">Home</a></li>
-              <li><a href="${base}pages/about_us">About Us</a></li>
+              <li><a href="${base}pages/about_us.html">About Us</a></li>
               <li>
                 <a href="#" class="desktop-link">Iconic</a>
                 <input type="checkbox" id="show-features">
@@ -26,26 +30,22 @@ document.addEventListener('DOMContentLoaded', () => {
                   <li><a href="#">Beefs</a></li>
                 </ul>
               </li>
-              <li><a href="${base}pages/contact">Contact Us</a></li>
-              <li><a href="${base}pages/discography">Discography</a></li>
-              <li><a href="${base}pages/mehfeel_countdown">MEHFEEL COUNTDOWN</a></li>
+              <li><a href="${base}pages/contact.html">Contact Us</a></li>
+              <li><a href="${base}pages/discography.html">Discography</a></li>
+              <li><a href="${base}pages/mehfeel_countdown.html">MEHFEEL COUNTDOWN</a></li>
             </ul>
           </div>
-          <label for="show-search" class="search-icon">
-            <i class="fas fa-search"></i>
-          </label>
+          <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
           <form action="#" class="search-box">
             <input type="text" placeholder="Type Something to Search..." required>
-            <button type="submit" class="go-icon">
-              <i class="fas fa-long-arrow-alt-right"></i>
-            </button>
+            <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
           </form>
         </nav>
       </div>
     </header>
   `;
 
-  // ── 3. Footer
+  // ── 3. Footer HTML
   const footerHTML = `
     <footer class="footer">
       <div class="container">
@@ -53,22 +53,22 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="footer-col">
             <h4>Company</h4>
             <ul>
-              <li><a href="${base}pages/about_us">About Us</a></li>
-              <li><a href="${base}pages/contact">Contact Us</a></li>
+              <li><a href="${base}pages/about_us.html">About Us</a></li>
+              <li><a href="${base}pages/contact.html">Contact Us</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>Get Help</h4>
             <ul>
-              <li><a href="${base}pages/faqs">FAQs</a></li>
-              <li><a href="${base}pages/privacy_policy">Privacy Policy</a></li>
+              <li><a href="${base}pages/faqs.html">FAQs</a></li>
+              <li><a href="${base}pages/privacy_policy.html">Privacy Policy</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>Legal</h4>
             <ul>
-              <li><a href="${base}pages/terms_of_service">Terms of Service</a></li>
-              <li><a href="${base}pages/cookie_policy">Cookie Policy</a></li>
+              <li><a href="${base}pages/terms_of_service.html">Terms of Service</a></li>
+              <li><a href="${base}pages/cookie_policy.html">Cookie Policy</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -76,9 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="social-links">
               <a href="#"><i class="bi bi-facebook"></i></a>
               <a href="https://x.com/Arcturus_dhh"><i class="bi bi-twitter"></i></a>
-              <a href="https://www.instagram.com/arcturus_dhh/">
-                <i class="bi bi-instagram"></i>
-              </a>
+              <a href="https://www.instagram.com/arcturus_dhh/"><i class="bi bi-instagram"></i></a>
               <a href="#"><i class="bi bi-linkedin"></i></a>
             </div>
           </div>
@@ -87,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </footer>
   `;
 
-  // ── 4. Inject
+  // ── 4. Inject into placeholders
   const hdr = document.getElementById('header-placeholder');
   if (hdr) hdr.innerHTML = headerHTML;
 
