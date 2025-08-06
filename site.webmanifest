@@ -1,0 +1,23 @@
+{
+  "name": "Why Mc Stan Is Da Goat",
+  "short_name": "MC Stan GOAT",
+  "icons": [
+    {
+      "src": "./assets/images/artists/mc_stan_images/favicon-android-192-touch-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/images/artists/mc_stan_images/favicon-android-512-touch-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff"
+}

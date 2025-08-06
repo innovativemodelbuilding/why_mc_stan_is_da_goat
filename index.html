@@ -1,0 +1,627 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Include this in your <head> or at the end of <body> in all your pages -->
+<script>
+  // Disable right-click context menu
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  // Disable certain key combinations:
+  document.addEventListener('keydown', function(e) {
+    // e.keyCode is deprecated but widely supported; you can also use e.key in modern browsers.
+    const key = e.keyCode;
+
+    // F12
+    if (key === 123) {
+      e.preventDefault();
+      return false;
+    }
+
+    // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+    if (e.ctrlKey && e.shiftKey && (key === 73 || key === 74)) {
+      // 73 = I, 74 = J
+      e.preventDefault();
+      return false;
+    }
+    if (e.ctrlKey && key === 85) {
+      // 85 = U
+      e.preventDefault();
+      return false;
+    }
+    // You can add more shortcuts if desired, e.g., Ctrl+Shift+C (keyCode 67),
+    // but note this may break accessibility or other browser features.
+    if (e.ctrlKey && e.shiftKey && key === 67) {
+      // 67 = C
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Optional: detect if DevTools is (probably) open via timing or dimension checks.
+  // This is very hacky and unreliable, but shown here for completeness:
+  (function() {
+    const element = new Image();
+    Object.defineProperty(element, 'id', {
+      get: function() {
+        // This getter runs when devtools console tries to print the element.
+        // You could, for example, alert or redirect, but be cautious (annoying UX).
+        console.warn('DevTools detected');
+      }
+    });
+    // Periodically log the element; in normal console this getter won't run,
+    // but if someone inspects console and expands logged objects, it may fire.
+    setInterval(function() {
+      console.log(element);
+      // No real prevention—just a detection attempt.
+    }, 2000);
+  })();
+</script>
+
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+/>
+
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home | MC Stan is Da GOAT</title>
+  <!-- Your custom styles -->
+  <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Standard favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/artists/mc_stan_images/mc_stan_ico.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/artists/mc_stan_images/mc_stan_ico.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/images/artists/mc_stan_images/favicon-android-512-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <!-- iOS Home Screen -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/artists/mc_stan_images/favicon-180-apple-touch-icon.png">
+
+  <!-- Web App Manifest for Android/Home Screen -->
+  <link rel="manifest" href="./site.webmanifest">
+  <meta name="theme-color" content="#ffffff">
+
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main class="page-container">
+    <!-- Sidebar: Table of Contents -->
+    <aside class="sidebar" aria-label="Table of Contents">
+      <h2 class="toc-title">Contents</h2>
+      <ul class="toc-list">
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#early-life">Early life</a></li>
+        <li><a href="#rise-to-fame">Rise to Fame</a></li>
+        <li><a href="#proof-evidence">Proof & Evidence</a></li>
+        <li>
+          <a href="./pages/discography">Discography</a>
+          <ul>
+            <li><a href="./pages/discography">Albums</a></li>
+            <li><a href="#singles">Singles</a></li>
+            <li><a href="#other-works">Other works</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </aside>
+
+    <!-- Article content -->
+    <article class="content">
+      <h1 class="article-title">MC Stan</h1>
+
+      <!-- Introduction / Lead -->
+      <section id="introduction">
+  <p>
+    Everyone slept on the fact that a legend was born on 30 August 1999 as Altaf Shaikh, they were unaware who has stepped on this God's green earth, grinding in Pune’s Tadiwala Road slums before flipping his fate into a movement. Fraud individuals tried to knock him down when he first stepped up. Emiway Bantai dissed him, people clownin’ in comments, saying he fell off before he even got a chance, but my GOAT didn’t flinch or fold. He ain’t never chased clout or tried to impress the industry, he just stayed real, stayed focused, and let his art talk louder than the hate.
+  </p>
+  <p>
+    Started off with qawwali, then switched lanes and brought a whole new sound to Desi hip-hop—pain, poetry, reality, philosophy, all raw and untouched. When he dropped tracks like “Astagfirullah” and then the iconic Album Tadipaar, the whole game shifted. His music wasn’t just beats—it was his life, his struggles, where he came from, his voice in a world that tried to mute him. While others were busy beefing, clout chasing, Stan was building a legacy brick by brick, track by track. And then the 2021 run? Insane. Back-to-back heat, no skips, no gimmicks. Every song had a purpose, every bar had weight.
+  </p>
+  <p>
+    By 2022, Insaan came through and showed he ain’t just a rapper—he a thinker. He talked about existence, betrayal, loyalty, and life in a way nobody else was doing. That ain’t regular rapper talk, that’s GOAT talk. He went from being an outsider to winning Bigg Boss 16 on his own vibe—never switched up, never catered to nobody. His insta lives? Legendary. No filter, only real shit. Whether he’s spitting facts, talking spiritual, or just vibin’ with fans, you can’t fake that level of real. That’s why people ride for him—not just ‘cause of the music, but ‘cause the person he is’ a basti boy made the world listen. MC Stan ain’t just part of the culture—he is the culture. A living statement that being yourself in a world that wants you to act fake is the realest flex of all.
+  </p>
+</section>
+
+        
+
+<section id="early-life">
+  <h2>Early life</h2>
+  <p>
+    Altaf Shaikh popped into this world on 16 October 1999 in Pune’s Tadiwala Road slums, born to a bus driver turned cop and a mother holding it down at home. He grew up in a cramped room where every day felt like a hustle and survival taught him lessons most never see. From the jump he saw how dreams and struggle run side by side and learned that if you want change you gotta fight for it.
+  </p>
+  <p>
+    Around age 12 he was singing qawwali at small gigs, feeling that vibe of devotion and life’s fragility. Then his brother slid him hip hop tracks from Tupac Eminem Lil Wayne Young Thug and others and he recognized his own grind in those beats. School felt like a trap so he chose the mic over textbooks. Nights in cyber cafes meant downloading beats learning flows and jumping into underground cyphers. Those battles were more than shows they were training ground for a voice spitting raw truth from the basti.
+  </p>
+  <p>
+    To score studio time and make DIY videos he hustled nonstop performing anywhere he could even if the crowd was small. He pushed tracks through WhatsApp groups and early YouTube waves while others chased easy paths. Every setback became fuel every doubt turned into fuel. Before the world knew his name MC Stan already had built his fortress from pain self belief and relentless grind. That street forged identity set him up to flip his story into a movement when he finally blew up.
+  </p>
+</section>
+
+
+
+<section id="rise-to-fame">
+  <h2>Rise to Fame & Key Milestones</h2>
+
+  <!-- Diss Timeline -->
+  <h3>Diss Tracks & Early Hype</h3>
+  <table class="stats-table">
+    <thead>
+      <tr>
+        <th>Year / Event</th>
+        <th>Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>“Samajh Meri Baat Ko” Diss</td>
+        <td>
+          MC Stan’s early diss aimed at established names like Emiway Bantai and Divine. The track triggered massive backlash—deleted uploads, floods of comments—but also put him squarely on the map as an unfiltered voice in Desi hip-hop.
+        </td>
+      </tr>
+      <tr>
+        <td>Emiway’s “Samajh Mein Aaya Kya”</td>
+        <td>
+          Emiway Bantai responded to Stan’s jab with “Samajh Mein Aaya Kya,” intensifying the buzz and polarizing audiences. Stan absorbed the heat and turned attention toward his own craft rather than retreating.
+        </td>
+      </tr>
+      <tr>
+        <td>Stan’s “Khuja Mat”</td>
+        <td>
+          In reply, MC Stan dropped “Khuja Mat,” leveraging the controversy into more streams and awareness. Though met with hate from some corners, the track cemented his image as someone who converts challenges into momentum.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Breakthrough Album & Hits -->
+  <h3>Debut Album & Notable Releases</h3>
+  <table class="stats-table">
+    <thead>
+      <tr>
+        <th>Release</th>
+        <th>Spotify / Chart Highlights</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Tadipaar</strong> (2020)</td>
+        <td>
+          Debut album rode the wave of his diss‑fueled hype. Multiple tracks amassed millions of Spotify streams over time (e.g., “Ek Din Pyaar” crossed tens of millions). Established Stan’s commercial viability and set the stage for next moves.
+        </td>
+      </tr>
+      <tr>
+        <td>“Nanchaku” (with Seedhe Maut, 2021)</td>
+        <td>
+          High-profile collab that broadened his audience. The track logged hundreds of thousands of streams shortly after release and became staple in live sets.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Insaan</strong> (2022)</td>
+        <td>
+          Sophomore album hit ~1.4M Spotify streams within 24 hours of release. Debuted at #5 on Top Albums Debut Global (Spotify) and positioned Stan among top Indian artists (#16 regionally). Single “Basti Ka Hasti” debuted around #36 in Top India Songs. Numbers showed shift from controversy hype to lasting artistry.
+        </td>
+      </tr>
+      <tr>
+        <td>“Haath Varthi” (2023)</td>
+        <td>
+          Single amassed ~699K+ Spotify streams in first 24 hours and trended globally: India #1, Pakistan #29, Kuwait #5, UK #11, Qatar #8, UAE #6, Canada #19. Shows expanding international footprint.
+        </td>
+      </tr>
+      <tr>
+        <td>Mc Stan Instagram Live (2023)</td>
+        <td>
+          After winning Bigg Boss 16, MC Stan went live on social media, where he broke records by reaching a peak viewership of over 541,000.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Streaming & Chart Achievements -->
+  <h3>Streaming & Chart Achievements (Spotify)</h3>
+  <table class="stats-table">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Achievement</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Album Debut – Insaan</td>
+        <td>Debuted at #5 on Top Albums Debut Global (Spotify)</td>
+      </tr>
+      <tr>
+        <td>Artist Ranking</td>
+        <td>Debuted around #16 among Top Indian Artists (Spotify)</td>
+      </tr>
+      <tr>
+        <td>Single Debut – Basti Ka Hasti</td>
+        <td>Entered Top India Songs at ~#36 on release</td>
+      </tr>
+      <tr>
+        <td>24-Hour Milestone</td>
+        <td>Insaan album ~1.4M streams in 24h; Haath Varthi ~699K streams in 24h</td>
+      </tr>
+      <tr>
+        <td>Global Trending</td>
+        <td>Haath Varthi trended: India #1; Pakistan #29; Kuwait #5; UK #11; Qatar #8; UAE #6; Canada #19</td>
+      </tr>
+      <tr>
+        <td>Other Notable Streams</td>
+        <td>Multiple tracks from Tadipaar and Insaan accumulated 10M+ streams each over time, solidifying long-term listening beyond initial hype.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Mainstream Breakthrough -->
+  <h3>Mainstream Breakthrough</h3>
+  <table class="stats-table">
+    <thead>
+      <tr>
+        <th>Event</th>
+        <th>Significance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bigg Boss 16 Win</td>
+        <td>First rapper to win Bigg Boss India—street credibility turned mainstream recognition without sacrificing authenticity.</td>
+      </tr>
+      <tr>
+        <td>Times Square Billboard</td>
+        <td>Featured alongside international collaborators, marking a milestone for Indian hip-hop’s global visibility.</td>
+      </tr>
+      <tr>
+        <td>Sold-Out Tours & Lives</td>
+        <td>Consistently sells out live shows and drives massive engagement on live streams, showing a loyal fanbase built from DIY hustle to major arenas.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Proof & Evidence Section -->
+<section id="proof-evidence">
+  <h2>Proof & Evidence</h2>
+  <div class="proof-gallery">
+
+    <figure>
+      <a href="./assets/images/Proof/insaan24hours.jpg"
+         data-lightbox="proof-gallery"
+         data-title="Insaan: ~1.4M Spotify streams in first 24 hours">
+        <img src="./assets/images/Proof/insaan24hours.jpg"
+             alt="Screenshot: Insaan 1.4M streams in 24h">
+      </a>
+      <figcaption>Insaan: ~1.4M Spotify streams in first 24 hours</figcaption>
+    </figure>
+
+    <figure>
+      <a href="./assets/images/Proof/Kworb.jpg"
+         data-lightbox="proof-gallery"
+         data-title="Kworb: Spotify Charts">
+        <img src="./assets/images/Proof/Kworb.jpg"
+             alt="Kworb: Spotify Charts">
+      </a>
+      <figcaption>Kworb: Spotify Charts</figcaption>
+    </figure>
+
+    <figure>
+      <a href="./assets/images/Proof/HaathVarthi_streams.jpg"
+         data-lightbox="proof-gallery"
+         data-title="“Haath Varthi”: ~699K streams in 24h, trending India #1, UK #11, UAE #6">
+        <img src="./assets/images/Proof/HaathVarthi_streams.jpg"
+             alt="Spotify trending stats for Haath Varthi">
+      </a>
+      <figcaption>“Haath Varthi”: ~699K streams in 24h, trending India #1, UK #11, UAE #6</figcaption>
+    </figure>
+
+    <figure>
+      <a href="./assets/images/Proof/bigboss_16_win.jpg"
+         data-lightbox="proof-gallery"
+         data-title="MC Stan winning Bigg Boss 16">
+        <img src="./assets/images/Proof/bigboss_16_win.jpg"
+             alt="Picture: MC Stan Bigg Boss 16 winner">
+      </a>
+      <figcaption>MC Stan winning Bigg Boss 16</figcaption>
+    </figure>
+
+    <figure>
+      <a href="./assets/images/Proof/stan_billboard.jpg"
+         data-lightbox="proof-gallery"
+         data-title="MC Stan on Times Square">
+        <img src="./assets/images/Proof/stan_billboard.jpg"
+             alt="Picture: MC Stan on Times Square">
+      </a>
+      <figcaption>MC Stan on Times Square</figcaption>
+    </figure>
+
+    <figure>
+      <a href="./assets/images/Proof/Insaan_GlobalCharts.jpg"
+         data-lightbox="proof-gallery"
+         data-title="MC Stan on Top Album Global Charts">
+        <img src="./assets/images/Proof/Insaan_GlobalCharts.jpg"
+             alt="Screenshot: MC Stan Global Charts">
+      </a>
+      <figcaption>MC Stan on Top Album Global Charts</figcaption>
+    </figure>
+
+    <figure>
+      <a href="./assets/images/Proof/basti_ka_hasti_charts.jpg"
+         data-lightbox="proof-gallery"
+         data-title="MC Stan Basti ka Hasti Charts">
+        <img src="./assets/images/Proof/basti_ka_hasti_charts.jpg"
+             alt="Screenshot: Basti ka hasti Charts">
+      </a>
+      <figcaption>MC Stan Basti ka Hasti Charts</figcaption>
+    </figure>
+
+    <figure>
+      <a href="./assets/images/Proof/HaathVarthi_charts.jpg"
+         data-lightbox="proof-gallery"
+         data-title="MC Stan Haath Varthi Charts">
+        <img src="./assets/images/Proof/HaathVarthi_charts.jpg"
+             alt="Screenshot: MC Stan Haath Varthi Charts">
+      </a>
+      <figcaption>MC Stan Haath Varthi Charts</figcaption>
+    </figure>
+
+    <figure>
+      <a href="./assets/images/Proof/Insta_live.jpg"
+         data-lightbox="proof-gallery"
+         data-title="MC Stan Instagram Live">
+        <img src="./assets/images/Proof/Insta_live.jpg"
+             alt="Screenshot: MC Stan Instagram Live">
+      </a>
+      <figcaption>MC Stan Instagram live Peaked at over 541K</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Detailed Track Performance -->
+  <h3>Detailed Track Performance</h3>
+  <p>Below is a breakdown of individual tracks’ peak dates, Spotify streams in peak period, and chart peaks in India (IN) where available.</p>
+  <table class="stats-table detailed-performance">
+    <thead>
+      <tr>
+        <th>Peak Date</th>
+        <th>Title</th>
+        <th>Streams</th>
+        <th>Peak India (IN)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2023/02/13</td>
+        <td>Ek Din Pyaar</td>
+        <td>49,876,081</td>
+        <td>21</td>
+      </tr>
+      <tr>
+        <td>2023/02/13</td>
+        <td>Basti Ka Hasti</td>
+        <td>45,477,700</td>
+        <td>35</td>
+      </tr>
+      <tr>
+        <td>2023/05/12</td>
+        <td>Haath Varthi</td>
+        <td>9,917,958</td>
+        <td>21</td>
+      </tr>
+      <tr>
+        <td>2023/02/13</td>
+        <td>Shana Bann</td>
+        <td>7,324,723</td>
+        <td>176</td>
+      </tr>
+      <tr>
+        <td>2023/08/30</td>
+        <td>Nusta Paisa</td>
+        <td>1,467,783</td>
+        <td>176</td>
+      </tr>
+      <tr>
+        <td>2024/08/02</td>
+        <td>F*CK WHAT THEY SAY</td>
+        <td>1,043,453</td>
+        <td>186</td>
+      </tr>
+      <tr>
+        <td>2021/07/23</td>
+        <td>Nanchaku</td>
+        <td>855,954</td>
+        <td>58</td>
+      </tr>
+      <tr>
+        <td>2022/02/18</td>
+        <td>Bitch</td>
+        <td>589,322</td>
+        <td>136</td>
+      </tr>
+      <tr>
+        <td>2022/02/18</td>
+        <td>Insaan</td>
+        <td>498,002</td>
+        <td>182</td>
+      </tr>
+      <tr>
+        <td>2021/08/07</td>
+        <td>I'm Done</td>
+        <td>282,108</td>
+        <td>192</td>
+      </tr>
+      <tr>
+        <td>2021/07/03</td>
+        <td>Broke Is A Joke</td>
+        <td>268,702</td>
+        <td>197</td>
+      </tr>
+      <tr>
+        <td>2022/02/18</td>
+        <td>How to Hate</td>
+        <td>217,774</td>
+        <td>48</td>
+      </tr>
+      <tr>
+        <td>2024/03/08</td>
+        <td>Numb</td>
+        <td>158,787</td>
+        <td>159</td>
+      </tr>
+      <tr>
+        <td>2023/02/13</td>
+        <td>Snake</td>
+        <td>137,318</td>
+        <td>188</td>
+      </tr>
+      <tr>
+        <td>2022/02/18</td>
+        <td>Maa Baap</td>
+        <td>128,694</td>
+        <td>60</td>
+      </tr>
+      <tr>
+        <td>2022/02/18</td>
+        <td>Fuckk love</td>
+        <td>122,040</td>
+        <td>71</td>
+      </tr>
+      <tr>
+        <td>2022/02/18</td>
+        <td>One Day Uh Gonna Pay</td>
+        <td>121,200</td>
+        <td>74</td>
+      </tr>
+      <tr>
+        <td>2022/02/18</td>
+        <td>Gender</td>
+        <td>113,878</td>
+        <td>85</td>
+      </tr>
+      <tr>
+        <td>2022/02/18</td>
+        <td>Kal Hai Mera Show</td>
+        <td>105,489</td>
+        <td>99</td>
+      </tr>
+      <tr>
+        <td>2021/05/28</td>
+        <td>Rehmani Keeda</td>
+        <td>98,098</td>
+        <td>78</td>
+      </tr>
+      <tr>
+        <td>2021/04/08</td>
+        <td>Kahan Par Hai</td>
+        <td>92,159</td>
+        <td>125</td>
+      </tr>
+      <tr>
+        <td>2022/02/18</td>
+        <td>Insaaniyat</td>
+        <td>90,039</td>
+        <td>129</td>
+      </tr>
+      <tr>
+        <td>2022/02/18</td>
+        <td>Regret</td>
+        <td>89,646</td>
+        <td>130</td>
+      </tr>
+      <tr>
+        <td>2021/08/30</td>
+        <td>Inn Log Ne Maare</td>
+        <td>48,644</td>
+        <td>150</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+        </ul>
+      </section>
+    </article>
+
+    <!-- Infobox in the right column -->
+    <aside class="infobox">
+      <img src="./assets/images/artists/mc_stan_images/mc_stan.jpg" alt="MC Stan" class="infobox-image">
+      <table class="infobox-table">
+        <tbody>
+          <tr>
+            <th colspan="2" class="infobox-header">MC Stan</th>
+          </tr>
+          <tr>
+            <td class="infobox-label">Born</td>
+            <td class="infobox-data">16 October 1999, Pune, India</td>
+          </tr>
+          <tr>
+            <td class="infobox-label">Genres</td>
+            <td class="infobox-data">Hip hop, Marathi rap</td>
+          </tr>
+          <tr>
+            <td class="infobox-label">Occupation(s)</td>
+            <td class="infobox-data">Rapper, songwriter</td>
+          </tr>
+          <tr>
+            <td class="infobox-label">Years active</td>
+            <td class="infobox-data">2017–present</td>
+          </tr>
+        </tbody>
+      </table>
+    </aside>
+  </main>
+  
+  
+
+
+  <div id="footer-placeholder"></div>
+
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+<script src="./java/partials.js"></script>
+</html>
+
+  <!-- Buy Me a Coffee widget -->
+  <script 
+    data-name="BMC-Widget" 
+    data-cfasync="false" 
+    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" 
+    data-id="arcturus_dhh" 
+    data-description="Support me on Buy me a coffee!" 
+    data-message="Broke tere liye rahinga joke" 
+    data-color="#5F7FFF" 
+    data-position="Right" 
+    data-x_margin="18" 
+    data-y_margin="18">
+  </script>
+
+  <script>
+    (function() {
+      let lastScrollY = window.pageYOffset;
+      const header = document.querySelector('.wrapper');
+
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.pageYOffset;
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          header.classList.add('hide-header');
+        } else {
+          header.classList.remove('hide-header');
+        }
+        lastScrollY = currentScrollY;
+      });
+    })();
+  </script>
+</body>
+</html>

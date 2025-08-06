@@ -1,0 +1,1217 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+
+
+/* ================= Reset & Base ================= */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ffffff;
+  color: #202122;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+ul {
+  list-style: none;
+}
+/* ================= Header / Navigation ================= */
+.wrapper {
+  background: #171c24;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease;
+  will-change: transform;
+  z-index: 1000;
+}
+
+.wrapper.hide-header {
+  transform: translateY(-100%);
+}
+
+.wrapper nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: calc(100% - 200px);
+  margin: 0 auto;
+  height: 70px;
+  padding: 0 20px;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-size: 1.5rem;
+  color: #bbbbbb;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #e91e63;
+}
+
+
+
+/* Remove underlines from logo and nav links */
+.wrapper nav .logo a,
+.wrapper nav .links li a {
+  text-decoration: none;
+}
+.wrapper nav .logo a:hover,
+.wrapper nav .links li a:hover {
+  text-decoration: none;
+}
+
+nav .content {
+  display: flex;
+  align-items: center;
+}
+
+.content .logo a {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  height: 70px;
+}
+
+.content .links {
+  margin-left: 80px;
+  display: flex;
+}
+
+.content .links li {
+  list-style: none;
+  position: relative;
+}
+
+.content .links li a,
+.content .links li label {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 9px 17px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  height: 70px;
+  line-height: normal;
+}
+.content .links li label {
+  display: none;
+}
+.content .links li a:hover,
+.content .links li label:hover {
+  background: #323c4e;
+}
+
+.wrapper .search-icon,
+.wrapper .menu-icon {
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  width: 70px;
+}
+.wrapper .menu-icon {
+  display: none;
+}
+
+.wrapper input[type="checkbox"] {
+  display: none;
+}
+.wrapper #show-search:checked ~ .search-icon i::before {
+  content: "\f00d";
+}
+
+.wrapper .search-box {
+  position: absolute;
+  height: 100%;
+  max-width: calc(100% - 50px);
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.wrapper #show-search:checked ~ .search-box {
+  opacity: 1;
+  pointer-events: auto;
+}
+.search-box input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  color: #fff;
+  background: #171c24;
+  padding: 0 100px 0 15px;
+}
+.search-box input::placeholder {
+  color: #f2f2f2;
+}
+.search-box .go-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 60px;
+  width: 70px;
+  background: #171c24;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Dropdown Menu */
+.content .links ul {
+  position: absolute;
+  background: #171c24;
+  top: 70px;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+.content .links li:hover > ul {
+  top: 70px;
+  opacity: 1;
+  visibility: visible;
+}
+.content .links ul li a {
+  display: block;
+  width: 100%;
+  line-height: 30px;
+  border-radius: 0px !important;
+}
+.content .links ul ul {
+  position: absolute;
+  top: 0;
+  right: calc(-100% + 8px);
+}
+.content .links ul li {
+  position: relative;
+}
+.content .links ul li:hover ul {
+  top: 0;
+}
+
+.insta-wrapper {
+  width: 100%;
+  height: 152px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+.insta-wrapper iframe {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ================= Responsive code ================= */
+
+/* For screens narrower than ~1250px */
+@media screen and (max-width: 1250px) {
+  .wrapper nav {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  nav .content .links {
+    margin-left: 30px;
+  }
+  .content .links li a {
+    padding: 8px 13px;
+  }
+  .wrapper .search-box {
+    max-width: calc(100% - 100px);
+  }
+  .wrapper .search-box input {
+    padding: 0 100px 0 15px;
+  }
+
+  /* force no underlines at this breakpoint */
+  .wrapper nav .logo a,
+  .wrapper nav .links li a {
+    text-decoration: none;
+  }
+}
+
+/* For screens narrower than ~900px: off-canvas nav fills left side fully */
+@media screen and (max-width: 900px) {
+  .wrapper .menu-icon {
+    display: flex;
+  }
+  .wrapper #show-menu:checked ~ .menu-icon i::before {
+    content: "\f00d";
+  }
+  /* Off-canvas menu: fixed to left, width 70% */
+  nav .content .links {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -70%;        /* hidden off-screen by its width */
+    width: 70%;        /* covers left 70% when open */
+    height: 100vh;
+    background: #14181f;
+    padding-top: 70px; /* push below header */
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+  /* Slide into view flush left */
+  nav #show-menu:checked ~ .content .links {
+    left: 0;
+  }
+  .content .links li {
+    margin: 15px 20px;
+  }
+  .content .links li a,
+  .content .links li label {
+    display: block;
+    padding: 8px 18px;
+    font-size: 20px;
+    line-height: 40px;
+    cursor: pointer;
+    height: auto;
+  }
+  .content .links li a.desktop-link {
+    display: none;
+  }
+
+  /* dropdown submenus in off-canvas */
+  .content .links ul,
+  .content .links ul ul {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    background: none;
+    max-height: 0px;
+    overflow: hidden;
+  }
+  .content .links #show-features:checked ~ ul,
+  .content .links #show-services:checked ~ ul,
+  .content .links #show-items:checked ~ ul {
+    max-height: 100vh;
+  }
+  .content .links ul li {
+    margin: 7px 20px;
+  }
+  .content .links ul li a {
+    font-size: 18px;
+    line-height: 30px;
+    border-radius: 5px !important;
+  }
+
+  /* force no underlines on mobile menu links */
+  .wrapper nav .logo a,
+  .wrapper nav .links li a,
+  .content .links li label {
+    text-decoration: none;
+  }
+}
+
+/* For screens narrower than ~400px */
+@media screen and (max-width: 400px) {
+  .wrapper nav {
+    padding: 0 10px;
+  }
+  .content .logo a {
+    font-size: 27px;
+    display: flex;
+    align-items: center;
+    height: 70px;
+  }
+  .wrapper .search-box {
+    max-width: calc(100% - 70px);
+  }
+  .wrapper .search-box .go-icon {
+    width: 30px;
+    right: 0;
+  }
+  .wrapper .search-box input {
+    padding-right: 30px;
+  }
+}
+
+/* ================= Spacing under header ================= */
+.page-container {
+  display: grid;
+  /* keep three columns, but let the middle one flex */
+  grid-template-columns: 220px 1fr 250px;
+  gap: 1rem;
+  /* remove the centered max-width constraint to allow full width */
+  max-width: none;
+  width: 100%;
+  /* only vertical margin, no horizontal */
+  margin: 80px 0 1rem;
+  padding: 0 1rem;
+}
+
+/* ================= Sidebar (Table of Contents) ================= */
+.sidebar {
+  grid-column: 1 / 2;
+  position: sticky;
+  top: calc(70px + 1rem);
+  background-color: #f8f9fa;
+  border: 1px solid #d1d5da;
+  padding: 1rem;
+  font-size: 0.95rem;
+  max-height: calc(100vh - (70px + 2rem));
+  overflow-y: auto;
+}
+.toc-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: #0645ad;
+  font-weight: 600;
+}
+.toc-list {
+  list-style: none;
+  padding-left: 0;
+}
+.toc-list li {
+  margin-bottom: 0.5rem;
+}
+.toc-list li a {
+  text-decoration: none;
+  color: #0645ad;
+}
+.toc-list li a:hover {
+  text-decoration: underline;
+}
+.toc-list li ul {
+  margin-left: 1rem;
+  margin-top: 0.25rem;
+}
+
+/* ================= Main Content (Wikipedia-like) ================= */
+.content-wrapper {
+  grid-column: 2 / 3;
+}
+.article-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+/* Ensure paragraphs across all sections align uniformly */
+article.content p {
+  margin-top: 0;
+  margin-bottom: 1.6em;
+  margin-left: 0;
+  padding-left: 0;
+  line-height: 1.6;
+  display: block;
+}
+
+/* Optional: headings spacing */
+article.content h2 {
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+article.content h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.4em;
+}
+
+/* Infobox positioned in right column, styled like Wikipedia */
+.infobox {
+  flex: 0 0 250px;
+  border: 1px solid #a2a9b1;
+  background-color: #f8f9fa;
+  font-size: 0.9rem;
+  position: sticky;
+  top: calc(70px + 1rem);
+  align-self: flex-start;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  margin-left: auto;
+}
+
+.infobox-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #a2a9b1;
+}
+
+.infobox-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.infobox-header {
+  background-color: #c8d6e5;
+  text-align: center;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-bottom: 1px solid #a2a9b1;
+  font-size: 1rem;
+}
+
+.infobox-label {
+  font-weight: 600;
+  padding: 0.4rem 0.5rem;
+  width: 40%;
+  vertical-align: top;
+  border-top: 1px solid #a2a9b1;
+  color: #202122;
+}
+
+.infobox-data {
+  padding: 0.4rem 0.5rem;
+  border-top: 1px solid #a2a9b1;
+  color: #202122;
+}
+/* Article text styles inside content-wrapper */
+
+.article-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.article-text h2 {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #a2a9b1;
+  padding-bottom: 0.2rem;
+}
+.article-text h3 {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+}
+.article-text p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+.article-text section p:first-of-type::first-letter {
+  float: left;
+  font-size: 3rem;
+  line-height: 1;
+  margin: 0 0.1rem 0 0;
+  font-weight: bold;
+  color: #0645ad;
+}
+.article-text ul,
+.article-text ol {
+  margin: 0 0 1rem 1.5rem;
+}
+.references-list {
+  margin-left: 1.5rem;
+}
+.article-text a {
+  color: #0645ad;
+}
+.article-text a:hover {
+  text-decoration: underline;
+}
+
+/* ================= Footer ================= */
+.footer {
+  padding: 70px 0;
+  background: #24262b;
+  margin-top: auto;
+}
+
+/* center the container and constrain its width */
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* use flex layout for columns */
+.footer .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-col {
+  width: 25%;
+  padding: 0 15px;
+}
+
+.footer-col h4 {
+  font-size: 25px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  font-weight: 500;
+  position: relative;
+}
+
+.footer-col h4::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  background-color: #e91e63;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}
+
+.footer-col ul li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  font-size: 20px;
+  text-transform: capitalize;
+  color: #bbbbbb;
+  text-decoration: none;
+  font-weight: 300;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #ffffff;
+  padding-left: 8px;
+}
+
+.footer-col .social-links a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255,255,255,0.2);
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+
+.footer-col .social-links a:hover {
+  color: #24262b;
+  background-color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .footer-col {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 574px) {
+  .footer-col {
+    width: 100%;
+  }
+}
+
+
+
+
+
+/* ================= Feedback Form ================= */
+.feedback-container {
+  max-width: 600px;
+  margin: 100px auto 50px;
+  background: #1f262f;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+.feedback-container h1 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+.feedback-container label {
+  display: block;
+  color: #f2f2f2;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.feedback-container input,
+.feedback-container textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  background: #24262b;
+  border: 1px solid #323c4e;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.2s ease;
+}
+.feedback-container input:focus,
+.feedback-container textarea:focus {
+  outline: none;
+  border-color: #e91e63;
+}
+.feedback-container button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #e91e63;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.feedback-container button:hover {
+  background: #d81b60;
+}
+
+/* ─── Global reset (all screens) ─── */
+html, body {
+  overflow-x: hidden;       /* no sideways scrolling ever */
+  scroll-behavior: smooth;  /* smooth vertical scrolling */
+}
+
+/* ===== Responsive adjustments ===== */
+
+/* For screens narrower than ~1250px */
+@media screen and (max-width: 1250px) {
+  .wrapper nav {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  nav .content .links {
+    margin-left: 30px;
+  }
+  .content .links li a {
+    padding: 8px 13px;
+  }
+  .wrapper .search-box {
+    max-width: calc(100% - 100px);
+  }
+  .wrapper .search-box input {
+    padding: 0 100px 0 15px;
+  }
+  /* force no underlines */
+  .wrapper nav .logo a,
+  .wrapper nav .links li a {
+    text-decoration: none;
+  }
+}
+
+/* For screens narrower than ~900px: off-canvas nav using transform */
+@media screen and (max-width: 900px) {
+  /* Show hamburger */
+  .wrapper .menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1100;           /* above the sliding panel */
+  }
+  .wrapper .menu-icon span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Off-canvas panel (hidden by transform) */
+  nav .content .links {
+    position: fixed;
+    top: 0;
+    left: 0;                   /* locked to left edge */
+    width: 100%;               /* change to 70% if desired */
+    height: 100vh;
+    background: #14181f;
+    padding-top: 70px;
+    overflow-y: auto;
+    transform: translateX(100%);      /* start off-screen right */
+    transition: transform 0.3s ease;  /* animate transform */
+    z-index: 1000;
+  }
+  /* Slide into view */
+  nav #show-menu:checked ~ .content .links {
+    transform: translateX(0);         /* flush left */
+  }
+
+  /* Hamburger → “X” animation */
+  .wrapper #show-menu:checked + .menu-icon span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .wrapper #show-menu:checked + .menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+  .wrapper #show-menu:checked + .menu-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Nav items styling */
+  .content .links li {
+    margin: 15px 20px;
+  }
+  .content .links li a,
+  .content .links li label {
+    display: block;
+    padding: 8px 18px;
+    font-size: 20px;
+    line-height: 40px;
+    cursor: pointer;
+    height: auto;
+  }
+  .content .links li a.desktop-link {
+    display: none;
+  }
+  /* Dropdown submenus */
+  .content .links ul,
+  .content .links ul ul {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    background: none;
+    max-height: 0;
+    overflow: hidden;
+  }
+  .content .links #show-features:checked ~ ul,
+  .content .links #show-services:checked ~ ul,
+  .content .links #show-items:checked ~ ul {
+    max-height: 100vh;
+  }
+  .content .links ul li {
+    margin: 7px 20px;
+  }
+  .content .links ul li a {
+    font-size: 18px;
+    line-height: 30px;
+    border-radius: 5px !important;
+  }
+
+  /* force no underlines */
+  .wrapper nav .logo a,
+  .wrapper nav .links li a,
+  .content .links li label {
+    text-decoration: none;
+  }
+}
+
+/* For screens narrower than ~400px */
+@media screen and (max-width: 400px) {
+  .wrapper nav {
+    padding: 0 10px;
+  }
+  .content .logo a {
+    font-size: clamp(1rem, 6vw, 1.5rem);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 70px;
+    display: flex;
+    align-items: center;
+  }
+  .wrapper .search-box {
+    max-width: calc(100% - 70px);
+  }
+  .wrapper .search-box .go-icon {
+    width: 30px;
+    right: 0;
+  }
+  .wrapper .search-box input {
+    padding-right: 30px;
+  }
+}
+
+/* For screens narrower than ~800px: collapse page layout */
+@media screen and (max-width: 800px) {
+  .page-container {
+    display: block;
+    margin-top: 90px; /* clear header + extra gap */
+  }
+  .sidebar {
+    position: static;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .content-wrapper {
+    width: 100%;
+  }
+  .infobox {
+    position: static;
+    width: 100%;
+    margin: 0 0 1rem 0;
+  }
+  .article-title {
+    font-size: 1.75rem;
+  }
+  .sidebar a {
+    text-decoration: none;
+  }
+}
+
+/* For screens narrower than ~560px */
+@media screen and (max-width: 560px) {
+  .wrapper nav {
+    padding: 0 10px;
+  }
+  .content .logo a {
+    font-size: clamp(1rem, 6vw, 1.5rem);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 70px;
+    display: flex;
+    align-items: center;
+  }
+  .wrapper .search-box {
+    max-width: calc(100% - 70px);
+  }
+  .wrapper .search-box .go-icon {
+    width: 30px;
+    right: 0;
+  }
+  .wrapper .search-box input {
+    padding-right: 30px;
+  }
+  .sidebar a {
+    text-decoration: none;
+  }
+}
+
+/* For screens narrower than ~480px */
+@media screen and (max-width: 480px) {
+  .article-title {
+    font-size: 1.5rem;
+  }
+  .article-text h2 {
+    font-size: 1.3rem;
+  }
+  .article-text h3 {
+    font-size: 1.1rem;
+  }
+  .sidebar a {
+    text-decoration: none;
+  }
+}
+
+
+/* ========================
+   Base Table Styling
+======================== */
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  table-layout: auto; /* Let content control column width */
+}
+
+.stats-table th,
+.stats-table td {
+  border: 1px solid #ccc;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: top;
+  word-break: break-word; /* Prevent overflow */
+  white-space: normal;     /* Allow text to wrap */
+}
+
+.stats-table thead th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+.stats-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* ========================
+   Rise to Fame Section
+======================== */
+#rise-to-fame {
+  overflow-x: auto;
+}
+
+/* ========================
+   Streaming & Chart Achievements Tables
+======================== */
+#streaming-chart-achievements {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+#streaming-chart-achievements table.stats-table {
+  margin-bottom: 1.5rem;
+}
+
+/* ========================
+   Responsive Adjustments
+======================== */
+@media (max-width: 600px) {
+  .stats-table {
+    table-layout: fixed; /* Columns take fixed width % */
+  }
+
+  .stats-table th,
+  .stats-table td {
+    padding: 0.6rem 0.5rem;
+    font-size: 0.85rem;
+    white-space: normal;    /* Wrap text instead of truncate */
+    word-break: break-word; /* Ensure long words break properly */
+  }
+
+  /* Optional: Adjust column widths */
+  .stats-table th:nth-child(1),
+  .stats-table td:nth-child(1) {
+    width: 25%;
+  }
+
+  .stats-table th:nth-child(2),
+  .stats-table td:nth-child(2) {
+    width: 35%;
+  }
+
+  .stats-table th:nth-child(3),
+  .stats-table td:nth-child(3) {
+    width: 20%;
+  }
+
+  .stats-table th:nth-child(4),
+  .stats-table td:nth-child(4) {
+    width: 20%;
+  }
+}
+
+
+
+/* ========================
+   Proof & Evidence Section
+======================== */
+
+/* 1. Import Lightbox2 styles (ensure you have included the Lightbox2 CSS in your HTML too) */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css");
+
+#proof-evidence {
+  margin-top: 3rem;
+}
+
+#proof-evidence h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.3rem;
+}
+
+.proof-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+/* uniform “card” size */
+.proof-gallery figure {
+  flex: 0 0 auto;
+  width: var(--card-width, 250px);
+  margin: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* wrap the image in an <a> for Lightbox */
+.proof-gallery figure a {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+/* image fills and is cropped */
+.proof-gallery figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* caption below */
+.proof-gallery figcaption {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+  flex-shrink: 0;
+}
+
+/* ========================
+   Responsive Adjustments
+======================== */
+@media (max-width: 600px) {
+  .proof-gallery {
+    justify-content: center;
+  }
+
+  .proof-gallery figure {
+    width: 100%;
+    aspect-ratio: auto;
+  }
+
+  .proof-gallery figure a {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* ========================
+   Force-Lightbox-Fixed Position
+======================== */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.lightboxOverlay,
+.lightbox {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 9999 !important;
+}
+
+.lightboxOverlay {
+  background: rgba(0, 0, 0, 0.85) !important;
+}
+
+.lightbox .lb-outerContainer {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.lightbox .lb-data .lb-caption {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* ========================
+   Custom Lightbox Navigation Arrows
+======================== */
+.lb-prev, .lb-next {
+  position: absolute !important;
+  top: 50% !important;
+  width: 30px !important;
+  height: 30px !important;
+  margin-top: -15px !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 50% !important;
+  text-align: center !important;
+  line-height: 30px !important;
+  font-size: 18px !important;
+  color: #fff !important;
+  z-index: 10000 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.lb-prev:after {
+  content: "\2039" !important;
+}
+
+.lb-next:after {
+  content: "\203A" !important;
+}
+
+.lb-prev {
+  left: 15px !important;
+}
+
+.lb-next {
+  right: 15px !important;
+}
+
+/* ─── Fit MEHFEEL + Flip-Clock to Mobile Viewports ─── */
+@media screen and (max-width: 768px) {
+  /* MEHFEEL image: 90% of viewport width */
+  .mehfeel-img {
+    width: 90vw !important;
+    max-width: none !important;
+    height: auto !important;
+  }
+
+  @media screen and (max-width: 768px) {
+  /* keep it on one line */
+  .flip-clock {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    overflow-x: auto !important;   /* small scrollbar if still just over */
+    padding: 0 4px !important;
+  }
+
+  /* slightly more breathing room */
+  .flip-clock__piece {
+    margin: 0 6px !important;
+  }
+
+  /* digits a bit larger than before */
+  .card {
+    font-size: 10vw !important;    /* up from 6vw */
+  }
+
+  /* labels a bit larger */
+  .flip-clock__slot {
+    font-size: 5.5vw !important;  /* up from 2vw */
+  }
+}
+}
