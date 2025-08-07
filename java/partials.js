@@ -1,13 +1,13 @@
 // java/partials.js
 document.addEventListener('DOMContentLoaded', () => {
-  // ── 1. Figure out your repo base path (works on GitHub Pages or localhost)
-  const pathParts = window.location.pathname.split('/').filter(p => p);
-  const repoName  = pathParts[0] && window.location.hostname !== 'localhost'
-                    ? pathParts[0]
-                    : '';
+  // 1) Compute your “base” (so it works on GH-Pages or localhost)
+  const parts    = window.location.pathname.split('/').filter(p => p);
+  const repoName = parts[0] && window.location.hostname !== 'localhost'
+                   ? parts[0]
+                   : '';
   const base = repoName ? `/${repoName}/` : '/';
 
-  // ── 2. Header HTML (use clean, no-.html URLs)
+  // 2) Build header (all hrefs are extension-less)
   const headerHTML = `
     <header>
       <div class="wrapper">
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </header>
   `;
 
-  // ── 3. Footer HTML (also clean URLs)
+  // 3) Build footer
   const footerHTML = `
     <footer class="footer">
       <div class="container">
@@ -85,41 +85,33 @@ document.addEventListener('DOMContentLoaded', () => {
     </footer>
   `;
 
-  // ── 4. Inject
+  // 4) Inject into your placeholders
   document.getElementById('header-placeholder')?.insertAdjacentHTML('beforeend', headerHTML);
   document.getElementById('footer-placeholder')?.insertAdjacentHTML('beforeend', footerHTML);
 
-  // ── 5. Hide incoming “.html” in the URL bar
+  // 5) If someone lands on “*.html” (e.g. /pages/about_us.html), strip it from the bar
   if (location.pathname.endsWith('.html') && history.replaceState) {
-    const cleanPath = location.pathname.replace(/\.html$/, '');
-    history.replaceState(null, '', cleanPath + location.search + location.hash);
+    const clean = location.pathname.replace(/\.html$/, '');
+    history.replaceState(null, '', clean + location.search + location.hash);
   }
 
-  // ── 6. Intercept clicks on your generated nav links
-  document.querySelectorAll('a[href^="' + base + '"]').forEach(link => {
-    const href = link.getAttribute('href');
-    const hasExt = href.match(/\.html($|[?#])/i);
-    const isDir   = href.endsWith('/');
-    // If it’s a “clean” link (no .xxx, no trailing slash)…
-    if (!hasExt && !isDir) {
-      link.addEventListener('click', e => {
+  // 6) Intercept clicks on your clean links and load the real file from /pages/
+  document.querySelectorAll('a[href^="' + base + '"]').forEach(a => {
+    const href = a.getAttribute('href');
+    // skip external, skip directory-style (trailing “/”), skip links already ending in .html
+    if (
+      href.startsWith(base) &&
+      !href.endsWith('/') &&
+      !href.endsWith('.html')
+    ) {
+      a.addEventListener('click', e => {
         e.preventDefault();
-        // load the real .html file
-        window.location.href = href + '.html' + location.search + location.hash;
+        // Build the real path: /pages/{pagename}.html
+        const page = href.slice(base.length);
+        window.location.href = base + 'pages/' + page + '.html'
+                             + location.search
+                             + location.hash;
       });
     }
   });
-});
-
-
-// after you inject header/footer…
-document.querySelectorAll('a[href^="' + base + '"]').forEach(link => {
-  const href = link.getAttribute('href');
-  if (!href.endsWith('/') && !href.endsWith('.html')) {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      // directly navigate to the real file
-      window.location.href = href + '.html' + window.location.search + window.location.hash;
-    });
-  }
 });
