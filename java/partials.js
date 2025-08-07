@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     : '';
   const base = repoName ? `/${repoName}/` : '/';
 
-  // ── 2. Header HTML
+  // ── 2. Header HTML (use clean, no-.html URLs)
   const headerHTML = `
     <header>
       <div class="wrapper">
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="logo"><a href="${base}">MC STAN DA GOAT</a></div>
             <ul class="links">
               <li><a href="${base}">Home</a></li>
-              <li><a href="${base}pages/about_us.html">About Us</a></li>
+              <li><a href="${base}about_us">About Us</a></li>
               <li>
                 <a href="#" class="desktop-link">Iconic</a>
                 <input type="checkbox" id="show-features">
@@ -30,9 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
                   <li><a href="#">Beefs</a></li>
                 </ul>
               </li>
-              <li><a href="${base}pages/contact.html">Contact Us</a></li>
-              <li><a href="${base}pages/discography.html">Discography</a></li>
-              <li><a href="${base}pages/mehfeel_countdown.html">MEHFEEL COUNTDOWN</a></li>
+              <li><a href="${base}contact">Contact Us</a></li>
+              <li><a href="${base}discography">Discography</a></li>
+              <li><a href="${base}mehfeel_countdown">MEHFEEL COUNTDOWN</a></li>
             </ul>
           </div>
           <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </header>
   `;
 
-  // ── 3. Footer HTML
+  // ── 3. Footer HTML (also clean URLs)
   const footerHTML = `
     <footer class="footer">
       <div class="container">
@@ -53,22 +53,22 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="footer-col">
             <h4>Company</h4>
             <ul>
-              <li><a href="${base}pages/about_us.html">About Us</a></li>
-              <li><a href="${base}pages/contact.html">Contact Us</a></li>
+              <li><a href="${base}about_us">About Us</a></li>
+              <li><a href="${base}contact">Contact Us</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>Get Help</h4>
             <ul>
-              <li><a href="${base}pages/faqs.html">FAQs</a></li>
-              <li><a href="${base}pages/privacy_policy.html">Privacy Policy</a></li>
+              <li><a href="${base}faqs">FAQs</a></li>
+              <li><a href="${base}privacy_policy">Privacy Policy</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>Legal</h4>
             <ul>
-              <li><a href="${base}pages/terms_of_service.html">Terms of Service</a></li>
-              <li><a href="${base}pages/cookie_policy.html">Cookie Policy</a></li>
+              <li><a href="${base}terms_of_service">Terms of Service</a></li>
+              <li><a href="${base}cookie_policy">Cookie Policy</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -85,10 +85,28 @@ document.addEventListener('DOMContentLoaded', () => {
     </footer>
   `;
 
-  // ── 4. Inject into placeholders
-  const hdr = document.getElementById('header-placeholder');
-  if (hdr) hdr.innerHTML = headerHTML;
+  // ── 4. Inject
+  document.getElementById('header-placeholder')?.insertAdjacentHTML('beforeend', headerHTML);
+  document.getElementById('footer-placeholder')?.insertAdjacentHTML('beforeend', footerHTML);
 
-  const ftr = document.getElementById('footer-placeholder');
-  if (ftr) ftr.innerHTML = footerHTML;
+  // ── 5. Hide incoming “.html” in the URL bar
+  if (location.pathname.endsWith('.html') && history.replaceState) {
+    const cleanPath = location.pathname.replace(/\.html$/, '');
+    history.replaceState(null, '', cleanPath + location.search + location.hash);
+  }
+
+  // ── 6. Intercept clicks on your generated nav links
+  document.querySelectorAll('a[href^="' + base + '"]').forEach(link => {
+    const href = link.getAttribute('href');
+    const hasExt = href.match(/\.html($|[?#])/i);
+    const isDir   = href.endsWith('/');
+    // If it’s a “clean” link (no .xxx, no trailing slash)…
+    if (!hasExt && !isDir) {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        // load the real .html file
+        window.location.href = href + '.html' + location.search + location.hash;
+      });
+    }
+  });
 });
