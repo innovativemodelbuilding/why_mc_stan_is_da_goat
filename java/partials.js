@@ -110,3 +110,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+
+// after you inject header/footer…
+document.querySelectorAll('a[href^="' + base + '"]').forEach(link => {
+  const href = link.getAttribute('href');
+  if (!href.endsWith('/') && !href.endsWith('.html')) {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      // directly navigate to the real file
+      window.location.href = href + '.html' + window.location.search + window.location.hash;
+    });
+  }
+});
